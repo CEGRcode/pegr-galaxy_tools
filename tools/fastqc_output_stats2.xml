@@ -1,0 +1,76 @@
+<tool id="fastqc_output_stats2" name="FastQC output statistics 2" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command>
+        <![CDATA[
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #while $input_html.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #while $input_txt.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #set history_id = $__app__.security.encode_id($input_html.history.id)
+            #set history_name = $input_html.history.name
+            #set job = $input_html.creating_job
+            #set job_state = $job.state
+            #if $job_state == 'error':
+                #set stderr = $job.stderr
+            #else:
+                #set stderr = ''
+            #end if
+            #set tool_id = $job.tool_id
+            #set tool_parameters = ""
+            #for $p in $job.parameters:
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
+            #end for
+            #set workflow_step = None
+            #set pjaas = $job.post_job_actions
+            #for pjaa in $pjaas:
+                #set pja = pjaa.post_job_action
+                #set workflow_step = $pja.workflow_step
+            #end for
+            python $__tool_directory__/fastqc_output_stats.py
+            --config_file $__tool_directory__/stats_config.ini
+            --input_html "$input_html"
+            --input_html_id "$__app__.security.encode_id($input_html.id)"
+            --input_html_datatype "$input_html.ext"
+            --input_txt "$input_txt"
+            --input_txt_id "$__app__.security.encode_id($input_txt.id)"
+            --input_txt_datatype "$input_txt.ext"
+            --dbkey "$input_html.metadata.dbkey"
+            --history_id "$history_id"
+            --history_name "$history_name"
+            --stats_tool_id "fastqc_output_stats2"
+            --stderr "$stderr"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --user_email "$__user_email__"
+            #if $workflow_step is not None:
+                --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
+            #end if
+            --output "$output"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input_html" type="data" format="html" label="FastQC HTML input" />
+        <param name="input_txt" type="data" format="txt" label="FastQC text input" />
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Gets the display URI for the HTML output of the **FastQC Read Quality reports** tool in the **CEGR Galaxy ChIP-exo**
+pipeline.  A JSON dictionary containing the run, sample and this URI is sent via a POST to the PEGR REST API where
+the information is stored to support the CEGR ChIP-exo statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
