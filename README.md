@@ -2,31 +2,41 @@ PEGR-Galaxy Communication Tools
 ===========================================================
 
 This repository contains the PEGR-Galaxy communication tools.
-Tools are copied from https://github.com/seqcode/cegr-galaxy with addition of one generalized pegr API tool.
 
-Below are the installtion steps need to be performed on machine where Galaxy is installed and on machine where PEGR is installed.
+Below are the installtion steps need to be performed on machine
+where Galaxy is installed and on machine where PEGR is installed.
 <br />
-### Installtion steps 
-#### Steps on Galaxy machine:
 
-The steps on Galaxy machine are very similar to adding any costum tool to Galaxy.
+Installation steps 
+===========================================================
+### Galaxy configuration:
 
-1- Copy the folder `per-galaxy_tools/tools` to `/srv/galaxy/server/tools`.
+These steps follow the recommened practice for additng a custom tool to a Galaxy instance.
 
-2- Tell Galaxy about the existance of the API tools by including them in the `/srv/galaxy/server/config/too_conf.xml.sample`. 
+Detailed Galaxy documentation is available here:
+https://galaxyproject.org/admin/tools/add-tool-tutorial/
 
-3- If using only `galaxy_post_pegr` tool which is generalized API tool for PEGR, update `galaxy_post_pegr_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
+1. Copy the folder `pegr-galaxy_tools/tools` to `/srv/galaxy/server/tools`.
+
+2. Update Galaxy configuration files to  the existance of the API tools by including them in the `/srv/galaxy/server/config/too_conf.xml.sample`. 
+
+3. If using only `galaxy_post_pegr` tool which is generalized API tool for PEGR, update `galaxy_post_pegr_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
 
   Please note, each user in PEGR has an email address and associated API key. The user who logs in to Galaxy and runs the Galaxy pipeline needs to have the same email address in Galaxy and PEGR to be authorized.
 
-4-Restart Galaxy (`sudo systemctl restart galaxy`)
+4. Restart Galaxy
 
-#### Steps on PEGR machine:
-Pipeline that is communicating with PEGR needs to be registered in PEGR at:
+    ```sudo systemctl restart galaxy```
 
-`Admin->Pipeline-> New Pipeline`
+### PEGR configuration:
 
-5- If using only galaxy_post_pegr tool in `Admin->Pipeline->New Pipeline->steps` include the pipeline steps in the following format:
+These steps update the PEGR system to allow new tools to communicate from Galaxy to PEGR.
+
+5. Navigate on the PEGR interface to:
+
+    `Admin->Pipeline-> New Pipeline`
+
+6. If using only galaxy_post_pegr tool in `Admin->Pipeline->New Pipeline->steps` include the pipeline steps in the following format:
 
 `[[toolId_1, desired_name_1], [toolId_2. desired_name_2],....]`
 
@@ -35,14 +45,14 @@ where each toolId is the Id of the tool in Galaxy for which the API tool is repo
 `[['toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1', 'Mapping'], ....]`
 <br />
 <br />
-#### Notes on using tool specific API tools:
-If using tool specific API tools step 3 and step 5 needs to be modified as the following:
+### Notes on using tool specific API tools:
+If using tool specific API tools step 3 and step 6 needs to be modified as the following:
 
-A- Step 3 should be replaced with:
+A. Step 3 should be replaced with:
 
-  3a- Update the `default` section  of `stats_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
+  3a. Update the `default` section  of `stats_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
 
-  3b- Define tool_category for each tool where left hand side is the tool for which the galaxy is reporting and right hand side is interpertable by PEGR.
+  3b. Define tool_category for each tool where left hand side is the tool for which the galaxy is reporting and right hand side is interpertable by PEGR.
 
 ```
 
@@ -86,9 +96,9 @@ chexmix = output_chexmix
 
 ```
 
-B- Step 5 shold be replaced with:
+B. Step 5 shold be replaced with:
 
-  5a- In PEGR: Admin->pipeline->steps include the pipeline steps in the following format:
+  5a. In PEGR: Admin->pipeline->steps include the pipeline steps in the following format:
 
   `[[StatstoolId_1, desired_name_1], [StatstoolId_2. desired_name_2],....]`
 
@@ -98,4 +108,13 @@ B- Step 5 shold be replaced with:
 
 ***Please note that using tool specific API tools has the advantage that more information such as different statistics for each specific tool are posted to PEGR, but the downside is that a new API tool needs to be generated for each newly used tool. Using the galaxy_post_pegr tool sends less information to PEGR, but it is compatible with most Galaxy tools and there is no need to generate a new API tool for each newly used Galaxy tool***
 
+Authors
+======
 
+Ali Nematbakhsh
+
+William KM Lai
+
+Gretta Kellogg
+
+Greg Von Kuster
