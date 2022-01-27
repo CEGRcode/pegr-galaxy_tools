@@ -200,13 +200,10 @@ def get_total_reads(file_path, single=False):
 
 def get_workflow_id(config_file, history_name):
     workflow_name = get_workflow_name_from_history_name(history_name)
-    print ('history name is:')
-    print (workflow_name)
     if workflow_name == 'unknown':
         return 'unknown'
     defaults = get_config_settings(config_file)
     gi = get_galaxy_instance(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
-    print ("after fetching galaxy")
     workflow_info_dicts = gi.workflows.get_workflows(name=workflow_name)
     if len(workflow_info_dicts) == 0:
         return 'unknown'
