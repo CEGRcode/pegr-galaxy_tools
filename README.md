@@ -18,7 +18,33 @@ https://galaxyproject.org/admin/tools/add-tool-tutorial/
 
 1. Copy the folder `pegr-galaxy_tools/tools` to `/srv/galaxy/server/tools`.
 
-2. Update Galaxy configuration files to  the existance of the API tools by including them in the `/srv/galaxy/server/config/too_conf.xml.sample`. 
+2. Update Galaxy configuration files to  the existance of the API tools by including them in the `/srv/galaxy/server/config/too_conf.xml.sample`.
+  <section id="PEGR" name="PEGR">
+    <tool file="pegr-galaxy_tools/tools/bam_to_scidx_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/bedtools_intersectbed_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/bwa_mem_output_stats_single.xml" />
+    <tool file="pegr-galaxy_tools/tools/chexmix_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/cwpair2_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/extract_genomic_dna_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/extract_genomic_dna_output_stats2.xml" />
+    <tool file="pegr-galaxy_tools/tools/extract_genomic_dna_output_stats3.xml" />
+    <tool file="pegr-galaxy_tools/tools/fasta_nucleotide_color_plot_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/fastqc_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/fastqc_output_stats2.xml" />
+    <tool file="pegr-galaxy_tools/tools/genetrack_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/input_dataset_r1_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/input_dataset_r2_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/mark_duplicates_bam_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/meme_fimo_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/meme_meme_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/pe_histogram_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/repeatmasker_wrapper_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/repeatmasker_wrapper_output_stats2.xml" />
+    <tool file="pegr-galaxy_tools/tools/samtool_filter2_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/tag_pileup_frequency_output_stats.xml" />
+    <tool file="pegr-galaxy_tools/tools/galaxy_post_pegr.xml" />
+  </section>
+ 
 
 3. If using only `galaxy_post_pegr` tool which is generalized API tool for PEGR, update `galaxy_post_pegr_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
 
