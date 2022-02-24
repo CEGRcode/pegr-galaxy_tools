@@ -103,9 +103,11 @@ If using tool specific API tools step 3 and step 6 needs to be modified as the f
 
 A. Step 3 should be replaced with:
 
-  3a. Update the `default` section  of `stats_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
+  3a. `cp stats_config.ini.sample stats_config.ini`
+  
+  3b. Update the `default` section  of `stats_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
 
-  3b. Define tool_category for each tool where left hand side is the tool for which the galaxy is reporting and right hand side is interpertable by PEGR.
+  3c. Define tool_category for each tool where left hand side is the tool for which the galaxy is reporting and right hand side is interpertable by PEGR.
 
 ```
 
