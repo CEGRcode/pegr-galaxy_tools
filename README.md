@@ -9,7 +9,7 @@ where Galaxy is installed and on machine where PEGR is installed.
 
 Installation steps 
 ===========================================================
-### Galaxy configuration:
+## Galaxy configuration:
 
 These steps follow the recommened practice for additng a custom tool to a Galaxy instance.
 
@@ -81,87 +81,55 @@ https://galaxyproject.org/admin/tools/add-tool-tutorial/
  
  5. Solve dependencies for local Galaxy tools that have been just added through Galaxy web interface. `Admin->Manage Dependencies`
 
-### PEGR configuration:
+## PEGR configuration:
 
 These steps update the PEGR system to allow new tools to communicate from Galaxy to PEGR.
 
-5. Navigate on the PEGR interface to:
+5. Navigate on the PEGR interface to introduce the pipline to PEGR:
 
     `Admin->Pipeline-> New Pipeline`
     
     <img width="636" alt="Screen Shot 2022-03-23 at 3 53 41 PM" src="https://user-images.githubusercontent.com/14810328/159784417-0a6db4c3-7b2c-4bb6-ad88-caf202a8120c.png">
 
-  
+Infomraiton to fill out different sections can be found at Galaxy web interface as the following:
 
-6. If using only galaxy_post_pegr tool in `Admin->Pipeline->New Pipeline->steps` include the pipeline steps in the following format:
+**Workflow Id** and **Workflow Url**
 
-`[[toolId_1, desired_name_1], [toolId_2. desired_name_2],....]`
+Workflow-> click on the desired workflow -> view
 
-where each toolId is the Id of the tool in Galaxy for which the API tool is reporting (direct upstream of the API tool). The desired_name is the name you like to see in PEGR as the short name for the tool. For example it can be:
+The following url will be shown:
+<img width="856" alt="Screen Shot 2022-03-23 at 4 42 11 PM" src="https://user-images.githubusercontent.com/14810328/159791947-52efc3f2-fa3b-4714-8665-81c2cf4e3fbe.png">
+
+'f2db41e1fa331b3e' at the end of URL is the "Workflow Id".
+
+**Name** and **Pipeline Version**
+
+PEGR assumes the name of the workflow in Galaxy is in the following format:`Name_PipelineVersion`
+
+For example the following workflow Name is "pairedPEGR" and pipeline Version is: 003
+<img width="1102" alt="Screen Shot 2022-03-23 at 4 46 50 PM" src="https://user-images.githubusercontent.com/14810328/159792698-15e6b2b8-f9d4-44b6-9299-2111be9639cf.png">
+
+**Notes**
+
+Optional. It is just some notes for yourself
+
+**Steps**
+
+If using only `galaxy_post_pegr` tool which is generalized API tool for PEGR, include the pipeline steps in the following format:
+
+`[[Galaxy_Tool_ID_1, desired_name_1], [Galaxy_Tool_ID_2. desired_name_2],....]`
+
+For example `Galaxy_Tool_ID_1` is `Galaxy_Tool_ID` of the tool in Galaxy for which the general PEGR API tool is reporting (direct upstream of the API tool). The desired_name is the name you like to see in PEGR as the short name for the tool. For example it can be:
 
 `[['toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1', 'Mapping'], ....]`
 <br />
 <br />
-### Notes on using tool specific API tools:
-If using tool specific API tools step 3 and step 6 needs to be modified as the following:
 
-A. Step 3 should be replaced with:
+If using tool specific API tools steps needs to be in the following format:
 
-  3a. `cp stats_config.ini.sample stats_config.ini`
-  
-  3b. Update the `default` section  of `stats_config.ini` by giving the `PEGR_URL` and `PEGR_API_KEY`. 
+ `[[Galaxy_API_Tool_ID_1, desired_name_1], [Galaxy_API_Tool_ID_2. desired_name_2],....]`
 
-  3c. Define tool_category for each tool where left hand side is the tool for which the galaxy is reporting and right hand side is interpertable by PEGR.
-
-```
-
-[tool_categories]
-
-input_dataset_r1 = output_fastqRead1
-
-input_dataset_r2 = output_fastqRead2
-
-toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.1 = output_bamToScidx
-
-toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.27.1+galaxy1 = output_bedtoolsIntersect
-
-toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1 = output_bwaMem
-
-toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.1.0 = output_cwpair2
-
-toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.1 = output_genetrack
-
-toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.3 = output_extractGenomicDNA
-
-toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1 = output_fastqc
-
-toolshed.g2.bx.psu.edu/repos/iuc/pe_histogram/pe_histogram/1.0.1 = output_peHistogram
-
-toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2 =output_repeatMasker
-
-toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.2.0 = output_meme
-
-toolshed.g2.bx.psu.edu/repos/iuc/fasta_nucleotide_color_plot/fasta_nucleotide_color_plot/1.0.1 = output_fourColorPlot
-
-toolshed.g2.bx.psu.edu/repos/jjohnson/samtools_filter/samtools_filter/1.1.1 = output_samtoolFilter
-
-toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/2.7.1.1 = output_markDuplicates
-
-toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.2.0 = output_fimo
-
-toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.1 = output_tagPileup
-
-chexmix = output_chexmix
-
-```
-
-B. Step 5 shold be replaced with:
-
-  5a. In PEGR: Admin->pipeline->steps include the pipeline steps in the following format:
-
-  `[[StatstoolId_1, desired_name_1], [StatstoolId_2. desired_name_2],....]`
-
-  where each StatstoolId is the Id of the specific API tool. The desired_name is the name you like to see as the short name for the tool. For example it can be:
+  For example `Galaxy_API_Tool_ID_1` is `Galaxy_Tool_ID` of the specific API tool in Galaxy which is reporting. The desired_name is the name you like to see in PEGR as the short name for the tool. For example it can be:
 
   `[['bwa_mem_output_stats_single', 'Mapping'], ....]`
 
