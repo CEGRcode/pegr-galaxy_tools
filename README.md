@@ -88,6 +88,10 @@ These steps update the PEGR system to allow new tools to communicate from Galaxy
 5. Navigate on the PEGR interface to:
 
     `Admin->Pipeline-> New Pipeline`
+    
+    <img width="636" alt="Screen Shot 2022-03-23 at 3 53 41 PM" src="https://user-images.githubusercontent.com/14810328/159784417-0a6db4c3-7b2c-4bb6-ad88-caf202a8120c.png">
+
+  
 
 6. If using only galaxy_post_pegr tool in `Admin->Pipeline->New Pipeline->steps` include the pipeline steps in the following format:
 
