@@ -165,11 +165,15 @@ where as an example 'galaxy_api_toolID_1' represents `galaxy tool ID` of the too
 
 ```
 
+Example of `steps` values for ChIP-exo pipeline in "tool specific"  is provided in this repository at `workflows/PEGR_STEPS_Galaxy-Workflow-pairedPEGR_003.txt`
+
+## Foot Notes ##
+
 *`galaxy tool ID` can be found on Galaxy web interface->choose one outputs of the to tool-> click on "i" icon -> Under `Job Informtion`->`Galaxy Tool ID`
 
 ** 
 PEGR api key can be found as the following
-1- 
+
 ```
 ssh some_user@pegr_machine
 mysql -u pegr -p
@@ -181,7 +185,7 @@ select api_key,email from user where user='brc_epigenomics@cornell.edu' ;
 
 
  
-***Please note that using tool specific API tools has the advantage that more information such as different statistics for each specific tool are posted to PEGR, but the downside is that a new API tool needs to be generated for each newly used tool. Using the galaxy_post_pegr tool sends less information to PEGR, but it is compatible with most Galaxy tools and there is no need to generate a new API tool for each newly used Galaxy tool***
+*** Please note that using tool specific API tools has the advantage that more information such as different statistics for each specific tool are posted to PEGR, but the downside is that a new API tool needs to be generated for each newly used tool. Using the galaxy_post_pegr tool sends less information to PEGR, but it is compatible with most Galaxy tools and there is no need to generate a new API tool for each newly used Galaxy tool***
 
 Authors
 ======
