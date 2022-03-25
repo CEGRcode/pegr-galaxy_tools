@@ -7,8 +7,10 @@ import string
 import subprocess
 import sys
 import tempfile
+import ssl
 
-from ConfigParser import ConfigParser
+#import configparser
+from configparser import ConfigParser
 from six.moves.urllib.error import HTTPError, URLError
 from six.moves.urllib.request import Request, urlopen
 from six import string_types
@@ -65,7 +67,8 @@ def format_tool_parameters(parameters):
     items = s.split('__SeP__')
     params = {}
     param_index = 0
-    for i in range(len(items) / 2):
+    ## python 3 notation update
+    for i in range(int(len(items) / 2)):
         params[restore_text(items[param_index])] = restore_text(items[param_index + 1])
         param_index += 2
     return params
@@ -129,7 +132,8 @@ def get_config_settings(config_file, section='defaults'):
     config_parser.read(config_file)
     for key, value in config_parser.items(section):
         if section == 'defaults':
-            d[string.upper(key)] = value
+            ## python3 updated notation
+            d[key.upper()] = value   
         else:
             d[key] = value
     return d
@@ -142,7 +146,7 @@ def get_datasets(config_file, ids, datatypes):
     for i, t in zip(listify(ids), listify(datatypes)):
         d['id'] = i
         d['type'] = t
-        d['uri'] = '%s/datasets/%s/display?preview=False' % (defaults['GALAXY_BASE_URL'], i)
+        d['uri'] = '%s/datasets/%s/display?preview=True' % (defaults['GALAXY_BASE_URL'], i)
     return d
 
 
@@ -405,10 +409,13 @@ def get_uniquely_mapped_reads(file_path, single=False):
 
 def get_workflow_id(config_file, history_name):
     workflow_name = get_workflow_name_from_history_name(history_name)
+    print ('history name is:')
+    print (workflow_name)
     if workflow_name == 'unknown':
         return 'unknown'
     defaults = get_config_settings(config_file)
     gi = get_galaxy_instance(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
+    print ("after fetching galaxy")
     workflow_info_dicts = gi.workflows.get_workflows(name=workflow_name)
     if len(workflow_info_dicts) == 0:
         return 'unknown'
@@ -462,8 +469,15 @@ def make_url(api_key, url, args=None):
 
 def post(api_key, url, data):
     url = make_url(api_key, url)
-    response = Request(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
-    return json.loads(urlopen(response).read())
+    print (type(data))
+    gcontext = ssl.SSLContext()
+    data=json.dumps(data)
+    response = Request(url, headers={'Content-Type': 'application/json'}, data=data.encode("utf-8"))
+    #webURL=urlopen(response, context=gcontext)
+    #data=webURL.read()
+    #encoding=webURL.info().get_content_charset('utf-8')
+    #print (json.loads(data.decode(encoding)))
+    return json.loads(urlopen(response, context=gcontext).read())
 
 
 def restore_text(text, character_map=MAPPED_CHARS):

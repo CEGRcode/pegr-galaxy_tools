@@ -1,8 +1,9 @@
 <tool id="bwa_mem_output_stats_single" name="BWA-MEM single read output statistics" version="1.0.0">
-    <description></description>
-    <macros>
+	<description></description>
+	    <macros>
         <import>macros.xml</import>
-    </macros>
+</macros>
+	 <expand macro="requirements" />
     <command>
         <![CDATA[
             #import time
