@@ -37,7 +37,7 @@ PEGR_URL = https://hestia.cac.cornell.edu/pegr/api/stats
 GALAXY_API_KEY = galaxy_api_key
 GALAXY_BASE_URL = https://galaxy.egc.cac.cornell.edu
 ```
-
+ 
 2.2 Check the `[tool_categories]` section of `stats_config.ini` file. The left hand side is the `Galaxy tool ID`* for which the galaxy is reporting to PEGR, and right hand side is the name interpertable by PEGR. If any Galaxy tools in ChIP-exo pieline is updated in future, the left hand side needs to be updated to reflect the new `Galaxy tool ID`. Right now, no update is needed to the default values which are the followings
 
 ```
@@ -81,19 +81,28 @@ toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.1
 chexmix = output_chexmix
 
 ```
+3. Update and check the config file for "generalized" pegr_api_tool.
 
-3. Update the config file for "general" pegr_api_tools.
+config file of generalized pegr_api_tool is desgined to be given explicitly as a separate input file inside galaxy. This allows Galaxy to report to multiple instances of PEFR if needed.
+A sample of input file is given in this repository at `/tools/pegr_info_file.txt.sample`. The file should look as the following:
 
 ```
-vi galaxy_post_pegr_config.ini
-```
-Provide values for the url and api keys for pegr
-```
+[defaults]
 PEGR_API_KEY = some_api_key
 PEGR_URL = https://hestia.cac.cornell.edu/pegr/api/stats
+
+GALAXY_API_KEY = galaxy_api_key
+GALAXY_BASE_URL = https://galaxy.egc.cac.cornell.edu
 ```
 
-Please note, each user in PEGR has an email address and associated API key. The same goes for any Galaxy user. The user who logs in to Galaxy and runs the Galaxy pipeline needs to have the same email address in both Galaxy and PEGR to be authorized. Hence, the `PEGR_API_KEY` and `GALAXY_API_KEY` corresponds to "this email" should be given in `galaxy_post_pegr_config.ini` and `stats_config.ini` files.
+A screen shot of using the generalized pegr_api_tool which is named  `postmetadata info to PEGR` is shown  below.  In the below screen shot `postmetadata info to PEGR` reports status of BWA tool to PEGR based on the config file information (PEGR and Galaxy URLs and API keys) given inside the `PEGR Info file`
+
+
+![Screen Shot 2022-03-29 at 10 27 46 AM](https://user-images.githubusercontent.com/14810328/160634563-4716d41e-9e82-464e-a156-82691543e5f8.png)
+
+
+
+Please note, each user in PEGR has an email address and associated API key. The same goes for any Galaxy user. The user who logs in to Galaxy and runs the Galaxy pipeline needs to have the same email address in both Galaxy and PEGR to be authorized. Hence, the `PEGR_API_KEY` and `GALAXY_API_KEY` corresponds to "this email" should be given in `stats_config.ini` files.
 
 4. Restart Galaxy
 
@@ -181,8 +190,6 @@ use pegr ;
 show tables ;
 select api_key,email from user where user='brc_epigenomics@cornell.edu' ;
 ```
-
-
 
  
 *** Please note that using tool specific API tools has the advantage that more information such as different statistics for each specific tool are posted to PEGR, but the downside is that a new API tool needs to be generated for each newly used tool. Using the galaxy_post_pegr tool sends less information to PEGR, but it is compatible with most Galaxy tools and there is no need to generate a new API tool for each newly used Galaxy tool***
