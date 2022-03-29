@@ -1,7 +1,8 @@
 [defaults]
 PEGR_URL = https://some_address/pegr/api/stats
 PEGR_API_KEY = api_key_in_pegr
-
+GALAXY_API_KEY = api_key_in_galaxy
+GALAXY_BASE_URL = https://galaxy.dev.cac.cornell.edu
 
 
 

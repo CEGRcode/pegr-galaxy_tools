@@ -1,7 +1,7 @@
 <!-- This is generalized version of Galaxy-PEGR API tools available https://github.com/seqcode/cegr-galaxy/tree/master/tools/cegr_statistics
 The tool is compatible with most of the Galaxy tools and will send meta data info of the upstream tool to PEGR -->
 
-<tool id="galaxy_post_pegr" name="post metdata info to PEGR" version="1.0.0">
+<tool id="galaxy_post_pegr" name="post metadata info to PEGR" version="1.0.0">
     <description></description>
     <macros>
 		    <!-- <import>macros.xml</import> -->
@@ -35,7 +35,7 @@ The tool is compatible with most of the Galaxy tools and will send meta data inf
                 #set workflow_step = $pja.workflow_step
             #end for
             python $__tool_directory__/galaxy_post_pegr.py
-            --config_file $__tool_directory__/galaxy_post_pegr_config.ini
+	    --config_file $config_input
             --input "$input"
             --input_id "$__app__.security.encode_id($input.id)"
             --input_datatype "$input.ext"
@@ -54,7 +54,9 @@ The tool is compatible with most of the Galaxy tools and will send meta data inf
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data" label="input" />
+	    <param name="config_input" type="data" label="PEGR Info file" />
+	    <param name="input" type="data" label="input" />
+
     </inputs>
     <outputs>
         <data name="output" format="txt" />
