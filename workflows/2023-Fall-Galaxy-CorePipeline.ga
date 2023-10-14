@@ -1230,7 +1230,7 @@
         },
         "27": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.2",
+            "content_id": "scriptmanager_expand-gff",
             "errors": null,
             "id": 27,
             "input_connections": {
@@ -1241,7 +1241,7 @@
             },
             "inputs": [],
             "label": null,
-            "name": "Resize coordinate window",
+            "name": "ScriptManager: Expand GFF File",
             "outputs": [
                 {
                     "name": "output",
@@ -1252,30 +1252,18 @@
                 "left": 2750,
                 "top": 650
             },
-            "post_job_actions": {
-                "DeleteIntermediatesActionoutput": {
-                    "action_arguments": {},
-                    "action_type": "DeleteIntermediatesAction",
-                    "output_name": "output"
-                }
-            },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.2",
-            "tool_shed_repository": {
-                "changeset_revision": "4eb3cc1f8466",
-                "name": "resize_coordinate_window",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"add_to_end\": \"30\", \"extend_existing\": \"existing\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"region_boundaries\": \"discard\", \"start_coordinate\": \"1\", \"subtract_from_start\": \"30\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.2",
+            "post_job_actions": {},
+            "tool_id": "scriptmanager_expand-gff",
+            "tool_state": "{\"SIZE\": \"30\", \"expansion_select\": \"border\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0+galaxy0",
             "type": "tool",
-            "uuid": "db6f295e-c6a8-428b-9300-1c06845baaf6",
+            "uuid": "85981d3f-2cb7-480a-946b-2bcdcc335740",
             "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "f86b092f-23ca-428b-9849-2fd84635fed0"
+                    "uuid": "cd372629-445d-418d-bff8-e1753096bfe0"
                 }
             ]
         },
