@@ -2004,7 +2004,7 @@
         },
         "43": {
             "annotation": "",
-            "content_id": "gff2bed1",
+            "content_id": "scriptmanager_gff-to-bed",
             "errors": null,
             "id": 43,
             "input_connections": {
@@ -2015,10 +2015,10 @@
             },
             "inputs": [],
             "label": null,
-            "name": "GFF-to-BED",
+            "name": "ScriptManager: Convert GFF to BED",
             "outputs": [
                 {
-                    "name": "out_file1",
+                    "name": "output",
                     "type": "bed"
                 }
             ],
@@ -2027,17 +2027,17 @@
                 "top": 1300
             },
             "post_job_actions": {},
-            "tool_id": "gff2bed1",
+            "tool_id": "scriptmanager_gff-to-bed",
             "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.1",
+            "tool_version": "0.0.1",
             "type": "tool",
-            "uuid": "3d7977c2-fcd1-49e4-a5d5-5bef7a37ed5b",
+            "uuid": "d020b4f4-1f24-41b0-a891-4cc3cd061362",
             "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "out_file1",
-                    "uuid": "a4f132d6-fbc2-463b-8996-fdd0230993ec"
+                    "output_name": "output",
+                    "uuid": "945295ed-2d95-4334-919d-e6f3a6143e1e"
                 }
             ]
         },
@@ -2136,7 +2136,7 @@
                 },
                 "input2": {
                     "id": 43,
-                    "output_name": "out_file1"
+                    "output_name": "output"
                 }
             },
             "inputs": [],
