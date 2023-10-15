@@ -1881,7 +1881,7 @@
         },
         "40": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.2",
+            "content_id": "scriptmanager_expand-gff",
             "errors": null,
             "id": 40,
             "input_connections": {
@@ -1892,7 +1892,7 @@
             },
             "inputs": [],
             "label": null,
-            "name": "Resize coordinate window",
+            "name": "ScriptManager: Expand GFF File",
             "outputs": [
                 {
                     "name": "output",
@@ -1904,29 +1904,23 @@
                 "top": 800
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.2",
-            "tool_shed_repository": {
-                "changeset_revision": "4eb3cc1f8466",
-                "name": "resize_coordinate_window",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"add_to_end\": \"10\", \"extend_existing\": \"existing\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"region_boundaries\": \"discard\", \"start_coordinate\": \"1\", \"subtract_from_start\": \"10\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.2",
+            "tool_id": "scriptmanager_expand-gff",
+            "tool_state": "{\"SIZE\": \"10\", \"expansion_select\": \"border\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0+galaxy0",
             "type": "tool",
-            "uuid": "c6d417ed-12ed-4bd4-88c2-e832eb4e6f7f",
+            "uuid": "cb53db6e-865c-46b5-9e1f-3d53c7e9bf8c",
             "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "2713dce2-0f60-4725-99c4-9d7e48bd2e61"
+                    "uuid": "d4ca2302-32ef-4b32-82a3-94959401dd9b"
                 }
             ]
         },
         "41": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.2",
+            "content_id": "scriptmanager_expand-gff",
             "errors": null,
             "id": 41,
             "input_connections": {
@@ -1937,7 +1931,7 @@
             },
             "inputs": [],
             "label": null,
-            "name": "Resize coordinate window",
+            "name": "ScriptManager: Expand GFF File",
             "outputs": [
                 {
                     "name": "output",
@@ -1949,23 +1943,17 @@
                 "top": 1300
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.2",
-            "tool_shed_repository": {
-                "changeset_revision": "4eb3cc1f8466",
-                "name": "resize_coordinate_window",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"add_to_end\": \"250\", \"extend_existing\": \"midpoint\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"region_boundaries\": \"discard\", \"start_coordinate\": \"1\", \"subtract_from_start\": \"250\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.2",
+            "tool_id": "scriptmanager_expand-gff",
+            "tool_state": "{\"SIZE\": \"500\", \"expansion_select\": \"center\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0+galaxy0",
             "type": "tool",
-            "uuid": "9e980103-70c4-4d49-9a78-f08515f6a08f",
+            "uuid": "1dc75a83-5a0a-4949-bbba-7d9759ffa5c9",
             "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "2ac43fed-79b7-42bc-868e-173c32d541f1"
+                    "uuid": "e05160c8-944b-4bf5-840c-06168f97b10d"
                 }
             ]
         },
