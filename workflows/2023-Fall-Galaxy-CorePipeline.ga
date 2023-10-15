@@ -688,18 +688,18 @@
         },
         "16": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.1",
+            "content_id": "scriptmanager_bam-to-scidx",
             "errors": null,
             "id": 16,
             "input_connections": {
-                "input_bam": {
+                "input": {
                     "id": 14,
                     "output_name": "output1"
                 }
             },
             "inputs": [],
             "label": null,
-            "name": "Convert BAM to ScIdx",
+            "name": "ScriptManager: Convert BAM to scIDX",
             "outputs": [
                 {
                     "name": "output",
@@ -710,30 +710,18 @@
                 "left": 1500,
                 "top": 650
             },
-            "post_job_actions": {
-                "DeleteIntermediatesActionoutput": {
-                    "action_arguments": {},
-                    "action_type": "DeleteIntermediatesAction",
-                    "output_name": "output"
-                }
-            },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.1",
-            "tool_shed_repository": {
-                "changeset_revision": "408520e1ae1a",
-                "name": "bam_to_scidx",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"input_bam\": {\"__class__\": \"ConnectedValue\"}, \"max_insert_size\": null, \"min_insert_size\": null, \"read\": \"0\", \"require_proper_mate_pairing\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.1",
+            "post_job_actions": {},
+            "tool_id": "scriptmanager_bam-to-scidx",
+            "tool_state": "{\"BAM\": {\"__class__\": \"RuntimeValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"read\": \"read_1\", \"require_paired_end\": {\"mate_pair\": false, \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0+galaxy0",
             "type": "tool",
-            "uuid": "f576f97c-c6cd-4854-88ac-87d5e6f835f5",
+            "uuid": "cd782242-26c5-4d5c-8075-1f6ca17c94e8",
             "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "37643e13-799d-4872-9d43-cc1d03f74191"
+                    "uuid": "1a86de9e-b3f1-475e-bd17-d5cea5fd85b0"
                 }
             ]
         },
