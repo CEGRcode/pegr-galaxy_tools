@@ -2172,40 +2172,45 @@
         },
         "47": {
             "annotation": "",
-            "content_id": "fasta_nucleotide_color_plot_output_stats",
+            "content_id": "resize_4color_plot",
             "errors": null,
             "id": 47,
             "input_connections": {
-                "input": {
+                "input_image": {
                     "id": 45,
                     "output_name": "output"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool resize 4color plot in png format",
+                    "name": "input_image"
+                }
+            ],
             "label": null,
-            "name": "Fasta nucleotide color plot output statistics",
+            "name": "resize 4color plot in png format",
             "outputs": [
                 {
-                    "name": "output",
-                    "type": "txt"
+                    "name": "output_resized_image",
+                    "type": "png"
                 }
             ],
             "position": {
-                "left": 5500,
-                "top": 660
+                "left": 5750,
+                "top": 800
             },
             "post_job_actions": {},
-            "tool_id": "fasta_nucleotide_color_plot_output_stats",
-            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_id": "resize_4color_plot",
+            "tool_state": "{\"cols\": \"200\", \"input_image\": {\"__class__\": \"RuntimeValue\"}, \"rows\": \"600\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
-            "uuid": "2a74def7-a151-4e25-9036-80120590b784",
+            "uuid": "d82c1570-e0f1-4a43-9805-b27f63d69b84",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "440c23ca-31f1-4a77-b3d5-39ccf8238ccd"
+                    "label": "output_resized_image",
+                    "output_name": "output_resized_image",
+                    "uuid": "96186431-3643-4a31-a0d5-7450cdcb6e1a"
                 }
             ]
         },
@@ -2251,9 +2256,48 @@
                     "uuid": "257376e8-5c88-42ea-96cd-b8e7045d784a"
                 }
             ]
+        },
+        "49": {
+            "annotation": "",
+            "content_id": "fasta_nucleotide_color_plot_output_stats",
+            "errors": null,
+            "id": 49,
+            "input_connections": {
+                "input": {
+                    "id": 47,
+                    "output_name": "output_resized_image"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Fasta nucleotide color plot output statistics",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 5750,
+                "top": 660
+            },
+            "post_job_actions": {},
+            "tool_id": "fasta_nucleotide_color_plot_output_stats",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "2a74def7-a151-4e25-9036-80120590b784",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "440c23ca-31f1-4a77-b3d5-39ccf8238ccd"
+                }
+            ]
         }
     },
     "tags": [],
-    "uuid": "b93b6f18-bb03-4f9e-9dd8-5abe107647a8",
-    "version": 9
+    "uuid": "5b85bb62-c6b0-4de7-9c56-071d5c83d859",
+    "version": 2
 }
