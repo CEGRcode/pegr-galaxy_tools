@@ -22,8 +22,8 @@
             #set tool_id = $job.tool_id
             #set tool_parameters = ""                                                                                                        
             #for $p in $job.parameters:
-                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name                                                                
-                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value                                                               
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                #set tool_parameters = $tool_parameters + "__SeP__" + str($p.value)
             #end for
             #set workflow_step = None
             #set pjaas = $job.post_job_actions                                                                                               
