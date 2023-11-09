@@ -272,8 +272,12 @@ def get_pegr_url(config_file):
 
 def get_pe_histogram_stats(file_path):
     pe_histogram_stats = dict(avgInsertSize=0,
+                              median_insert_size_set=0,
+                              mode_insert_size_set=0,
                               stdDevInsertSize=0)
     avg_insert_size_set = False
+    median_insert_size_set = False
+    mode_insert_size_set = False
     std_dev_insert_size_set = False
     with open(file_path) as fh:
         for i, line in enumerate(fh):
@@ -282,11 +286,19 @@ def get_pe_histogram_stats(file_path):
                 items = line.split(': ')
                 pe_histogram_stats['avgInsertSize'] = float('%.4f' % float(items[1]))
                 avg_insert_size_set = True
+            elif line.startswith('# Median Insert Size'):
+                items = line.split(': ')
+                pe_histogram_stats['medianInsertSize'] = float('%.4f' % float(items[1]))
+                median_insert_size_set = True
+            elif line.startswith('# Mode Insert Size'):
+                items = line.split(': ')
+                pe_histogram_stats['modeInsertSize'] = float('%.4f' % float(items[1]))
+                mode_insert_size_set = True
             elif line.startswith('# Std deviation of Insert Size'):
                 items = line.split(': ')
                 pe_histogram_stats['stdDevInsertSize'] = float('%.4f' % float(items[1]))
                 std_dev_insert_size_set = True
-            if avg_insert_size_set and std_dev_insert_size_set:
+            if avg_insert_size_set and median_insert_size_set and mode_insert_size_set and mode_insert_size_set:
                 break
     fh.close()
     return pe_histogram_stats
