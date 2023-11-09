@@ -160,6 +160,12 @@ where as an example 'galaxy_toolID_1' represents `galaxy toolID` of the Galaxy t
 ```
 [['toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1', 'Mapping'], ....]
 ```
+#### paired_004 steps example:
+
+```
+[["input_dataset_r1_output_stats","fastqRead1"],["input_dataset_r2_output_stats","fastqRead2"],["fastqc_output_stats","fastqc"],["fastqc_output_stats2","fastqc"],["mark_duplicates_bam_output_stats","markDuplicates"],["samtool_filter2_output_stats","samtoolFilter"],["pe_histogram_output_stats","peHistogram"],["bam_to_scidx_output_stats","bamToScidx"],["genetrack_output_stats","genetrack"],["bedtools_intersectbed_output_stats","bedtoolsIntersect"],["cwpair2_output_stats","cwpair2"],["bigwig_dataset_forward_output_stats","scidx_to_bigwig_forward"],["bigwig_dataset_reverse_output_stats","scidx_to_bigwig_reverse"],["extract_genomic_dna_output_stats","extractGenomicDNA"],["extract_genomic_dna_output_stats2","extractGenomicDNA"],["repeatmasker_wrapper_output_stats","repeatMasker"],["repeatmasker_wrapper_output_stats2","repeatMasker"],["meme_meme_output_stats","meme"],["meme_fimo_output_stats","fimo"],["extract_genomic_dna_output_stats3","extractGenomicDNA"],["fasta_nucleotide_color_plot_output_stats","fourColorPlot"],["tag_pileup_frequency_output_stats","tagPileup"]]
+```
+
 <br />
 <br />
 
