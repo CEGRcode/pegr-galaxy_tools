@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import ssl
+import gzip
 
 #import configparser
 from configparser import ConfigParser
@@ -34,6 +35,12 @@ MAPPED_CHARS = {'>': '__gt__',
 # Maximum value of a signed 32 bit integer (2**31 - 1).
 MAX_GENOME_SIZE = 2147483647
 
+def is_gz_file(filepath):
+    """
+    Check first byte of file to see if it is gzipped
+    """
+    with open(filepath, 'rb') as test_f:
+        return test_f.read(2) == b'\x1f\x8b'
 
 def check_response(pegr_url, payload, response):
     try:
@@ -202,20 +209,17 @@ def get_mapped_reads(file_path, single=False):
         cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
     return get_reads(cmd)
 
-
-def get_number_of_lines(file_path):
-    i = 0
-    with open(file_path) as fh:
-        for i, l in enumerate(fh):
-            pass
-    fh.close()
-    if i == 0:
-        return i
-    return i + 1
-
-
 def get_peak_pair_wis(file_path):
-    return get_number_of_lines(file_path)
+    """
+    Get line count using wc -l for optionally gzipped file
+    """
+    line_ct = 0
+    if (is_gz_file(file_path)):
+        gz_process = subprocess.Popen(('gzip', '-dc', file_path), stdout=subprocess.PIPE)
+        line_ct = int(subprocess.check_output(('wc', '-l'), stdin=gz_process.stdout).strip().split(b' ')[0])
+    else:
+        line_ct = int(subprocess.check_output(('wc', '-l', file_path)).strip().split(b' ')[0])
+    return (line_ct)
 
 
 def get_peak_stats(file_path):
