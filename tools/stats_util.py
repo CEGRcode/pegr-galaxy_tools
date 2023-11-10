@@ -42,6 +42,11 @@ def is_gz_file(filepath):
     with open(filepath, 'rb') as test_f:
         return test_f.read(2) == b'\x1f\x8b'
 
+def openfile(filepath, mode='r'):
+    if (is_gz_file(filepath)):
+        return gzip.open(filepath, mode) 
+    return open(filepath, mode)
+
 def check_response(pegr_url, payload, response):
     try:
         s = json.dumps(payload)
@@ -239,7 +244,7 @@ def get_peak_stats(file_path):
     scores = []
     singletons = 0
     i = 0
-    with open(file_path) as fh:
+    with openfile(file_path, 'rt') as fh:
         for i, line in enumerate(fh):
             items = line.split('\t')
             # Gff column 6 is score.
