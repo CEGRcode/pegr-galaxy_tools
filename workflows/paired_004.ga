@@ -1548,9 +1548,57 @@
         },
         "37": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/5.4.1+galaxy0",
+            "content_id": "motif_logo_memexml_to_pngs",
             "errors": null,
             "id": 37,
+            "input_connections": {
+                "input": {
+                    "id": 35,
+                    "output_name": "xml_outfile"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "extract list of motif logos from memexml file",
+            "outputs": [
+                {
+                    "name": "output_logo_png",
+                    "type": "input"
+                },
+                {
+                    "name": "output_logo_rc_png",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 4500,
+                "top": 200
+            },
+            "post_job_actions": {},
+            "tool_id": "motif_logo_memexml_to_pngs",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "4679c8ce-cd08-4a16-a0c8-81bd8b0b674d",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output_logo_rc_png",
+                    "uuid": "a241d9cc-41dc-4cbb-932b-7fcde9fa8f8e"
+                },
+                {
+                    "label": null,
+                    "output_name": "output_logo_png",
+                    "uuid": "23a76e26-1477-4624-9d0a-3ac52375a66f"
+                }
+            ]
+        },
+        "38": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/5.4.1+galaxy0",
+            "errors": null,
+            "id": 38,
             "input_connections": {
                 "fasta_type|input_database": {
                     "id": 29,
@@ -1602,8 +1650,8 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "xml_outfile",
-                    "uuid": "038d0306-726b-4312-8659-d9ff2b3e4359"
+                    "output_name": "gff_outfile",
+                    "uuid": "bce109bd-39a3-4620-ac94-e42a581612dc"
                 },
                 {
                     "label": null,
@@ -1612,61 +1660,13 @@
                 },
                 {
                     "label": null,
+                    "output_name": "xml_outfile",
+                    "uuid": "038d0306-726b-4312-8659-d9ff2b3e4359"
+                },
+                {
+                    "label": null,
                     "output_name": "txt_outfile",
                     "uuid": "df4c0e31-de86-4694-a3cf-2cb3ce905c7e"
-                },
-                {
-                    "label": null,
-                    "output_name": "gff_outfile",
-                    "uuid": "bce109bd-39a3-4620-ac94-e42a581612dc"
-                }
-            ]
-        },
-        "38": {
-            "annotation": "",
-            "content_id": "motif_logo_memexml_to_pngs",
-            "errors": null,
-            "id": 38,
-            "input_connections": {
-                "input": {
-                    "id": 35,
-                    "output_name": "xml_outfile"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "extract list of motif logos from memexml file",
-            "outputs": [
-                {
-                    "name": "output_logo_png",
-                    "type": "input"
-                },
-                {
-                    "name": "output_logo_rc_png",
-                    "type": "input"
-                }
-            ],
-            "position": {
-                "left": 4500,
-                "top": 200
-            },
-            "post_job_actions": {},
-            "tool_id": "motif_logo_memexml_to_pngs",
-            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.0",
-            "type": "tool",
-            "uuid": "4679c8ce-cd08-4a16-a0c8-81bd8b0b674d",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output_logo_png",
-                    "uuid": "23a76e26-1477-4624-9d0a-3ac52375a66f"
-                },
-                {
-                    "label": null,
-                    "output_name": "output_logo_rc_png",
-                    "uuid": "a241d9cc-41dc-4cbb-932b-7fcde9fa8f8e"
                 }
             ]
         },
@@ -1677,7 +1677,7 @@
             "id": 39,
             "input_connections": {
                 "input": {
-                    "id": 37,
+                    "id": 38,
                     "output_name": "txt_outfile"
                 }
             },
@@ -1915,12 +1915,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool ScriptManager: Four Color Sequence Plot",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "ScriptManager: Four Color Sequence Plot",
             "outputs": [
@@ -1935,7 +1930,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_four-color",
-            "tool_state": "{\"a_select_color_cond\": {\"a_select_color\": \"a_color\", \"__current_case__\": 0, \"color_a\": \"D00000\"}, \"c_select_color_cond\": {\"c_select_color\": \"c_color\", \"__current_case__\": 0, \"color_c\": \"0000D0\"}, \"g_select_color_cond\": {\"g_select_color\": \"g_color\", \"__current_case__\": 0, \"color_g\": \"FFB400\"}, \"input\": {\"__class__\": \"RuntimeValue\"}, \"n_select_color_cond\": {\"n_select_color\": \"n_color\", \"__current_case__\": 0, \"color_n\": \"808080\"}, \"pixel_height\": \"1\", \"pixel_width\": \"1\", \"t_select_color_cond\": {\"t_select_color\": \"t_color\", \"__current_case__\": 0, \"color_t\": \"00D000\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"a_select_color_cond\": {\"a_select_color\": \"a_color\", \"__current_case__\": 0, \"color_a\": \"D00000\"}, \"c_select_color_cond\": {\"c_select_color\": \"c_color\", \"__current_case__\": 0, \"color_c\": \"0000D0\"}, \"g_select_color_cond\": {\"g_select_color\": \"g_color\", \"__current_case__\": 0, \"color_g\": \"FFB400\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"n_select_color_cond\": {\"n_select_color\": \"n_color\", \"__current_case__\": 0, \"color_n\": \"808080\"}, \"pixel_height\": \"1\", \"pixel_width\": \"1\", \"t_select_color_cond\": {\"t_select_color\": \"t_color\", \"__current_case__\": 0, \"color_t\": \"00D000\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "a0e9284d-6609-4934-bf1c-084ced204807",
@@ -2017,12 +2012,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool resize 4color plot in png format",
-                    "name": "input_image"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "resize 4color plot in png format",
             "outputs": [
@@ -2037,7 +2027,7 @@
             },
             "post_job_actions": {},
             "tool_id": "resize_4color_plot",
-            "tool_state": "{\"cols\": \"200\", \"input_image\": {\"__class__\": \"RuntimeValue\"}, \"rows\": \"600\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"cols\": \"200\", \"input_image\": {\"__class__\": \"ConnectedValue\"}, \"rows\": \"600\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
             "uuid": "d82c1570-e0f1-4a43-9805-b27f63d69b84",
