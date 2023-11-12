@@ -22,13 +22,13 @@
         --stats_tool_id "bigwig_dataset_reverse_output_stats"
         --tool_id "scidx_to_bigwig_reverse"
         --user_email "$__user_email__"
-        --output "$output"
+        --output "$payload"
     </command>
     <inputs>
         <param name="input" type="data" format="bigwig" label="BigWig (Reverse)" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>

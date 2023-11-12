@@ -22,13 +22,13 @@
         --stats_tool_id "input_dataset_r2_output_stats"
         --tool_id "input_dataset_r2"
         --user_email "$__user_email__"
-        --output "$output"
+        --output "$payload"
     </command>
     <inputs>
         <param name="input" type="data" format="fastq.gz" label="Fastqsanger.gz input" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>

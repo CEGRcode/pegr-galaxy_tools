@@ -22,13 +22,13 @@
         --stats_tool_id "bigwig_dataset_forward_output_stats"
         --tool_id "scidx_to_bigwig_forward"
         --user_email "$__user_email__"
-        --output "$output"
+        --output "$payload"
     </command>
     <inputs>
         <param name="input" type="data" format="bigwig" label="BigWig (Forward)" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>
