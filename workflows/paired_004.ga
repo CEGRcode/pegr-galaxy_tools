@@ -766,7 +766,7 @@
         },
         "19": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.1",
+            "content_id": "genetrack_gz",
             "errors": null,
             "id": 19,
             "input_connections": {
@@ -777,41 +777,29 @@
             },
             "inputs": [],
             "label": null,
-            "name": "GeneTrack",
+            "name": "GeneTrack (gzip)",
             "outputs": [
                 {
-                    "name": "genetrack_output",
-                    "type": "input"
+                    "name": "output",
+                    "type": "gff"
                 }
             ],
             "position": {
                 "left": 1750,
                 "top": 650
             },
-            "post_job_actions": {
-                "DeleteIntermediatesActiongenetrack_output": {
-                    "action_arguments": {},
-                    "action_type": "DeleteIntermediatesAction",
-                    "output_name": "genetrack_output"
-                }
-            },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.1",
-            "tool_shed_repository": {
-                "changeset_revision": "b41a4bb828a3",
-                "name": "genetrack",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"down_width\": \"5\", \"exclusion\": \"10\", \"filter\": \"0\", \"input_format_cond\": {\"input_format\": \"scidx\", \"__current_case__\": 0, \"input\": {\"__class__\": \"ConnectedValue\"}}, \"sigma\": \"5\", \"up_width\": \"5\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "post_job_actions": {},
+            "tool_id": "genetrack_gz",
+            "tool_state": "{\"down_width\": \"5\", \"exclusion\": \"10\", \"filter\": \"0\", \"gzip\": true, \"input_format_cond\": {\"input_format\": \"scidx\", \"__current_case__\": 0, \"input\": {\"__class__\": \"ConnectedValue\"}}, \"sigma\": \"5\", \"up_width\": \"5\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.1",
             "type": "tool",
-            "uuid": "33374528-ea51-4f6e-9c75-81083bd10845",
+            "uuid": "d7f55fc8-80ec-41f9-846d-5ee6a85bb725",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "genetrack_output",
-                    "uuid": "d02f278b-7bf6-4276-a0bb-e8d8e1d23441"
+                    "label": "output",
+                    "output_name": "output",
+                    "uuid": "d7eb49f1-36cc-41c6-8ce0-1e5c0ea87735"
                 }
             ]
         },
@@ -860,7 +848,7 @@
             "input_connections": {
                 "input": {
                     "id": 19,
-                    "output_name": "genetrack_output"
+                    "output_name": "output"
                 }
             },
             "inputs": [],
@@ -881,7 +869,7 @@
             "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
-            "uuid": "00cf3ea3-3a47-4dae-945c-597563481b0e",
+            "uuid": "b284fd06-17fb-43ba-bd68-2d7ab551f930",
             "when": null,
             "workflow_outputs": []
         },
@@ -893,7 +881,7 @@
             "input_connections": {
                 "inputA": {
                     "id": 19,
-                    "output_name": "genetrack_output"
+                    "output_name": "output"
                 },
                 "reduce_or_iterate|inputB": {
                     "id": 2,
@@ -930,7 +918,7 @@
             "tool_state": "{\"bed\": false, \"count\": false, \"fraction\": \"\", \"fraction_cond\": {\"fraction_select\": \"default\", \"__current_case__\": 0}, \"genome_file_opts\": {\"genome_file_opts_selector\": \"loc\", \"__current_case__\": 0, \"genome\": null}, \"header\": false, \"inputA\": {\"__class__\": \"ConnectedValue\"}, \"inputB\": {\"__class__\": \"RuntimeValue\"}, \"invert\": true, \"once\": false, \"overlap_mode\": [\"-wa\"], \"reciprocal\": \"false\", \"reduce_or_iterate\": {\"reduce_or_iterate_selector\": \"iterate\", \"__current_case__\": 0, \"inputB\": {\"__class__\": \"ConnectedValue\"}}, \"sorted\": false, \"split\": false, \"strand\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.30.0+galaxy1",
             "type": "tool",
-            "uuid": "1a20398b-3da6-424a-90da-b9affe6afb7a",
+            "uuid": "bc8b5406-e717-4406-bef7-8779881d46bf",
             "when": null,
             "workflow_outputs": [
                 {
@@ -975,7 +963,7 @@
         },
         "24": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.1.1",
+            "content_id": "cwpair2_gz",
             "errors": null,
             "id": 24,
             "input_connections": {
@@ -986,20 +974,8 @@
             },
             "inputs": [],
             "label": null,
-            "name": "CWPair2",
+            "name": "CWPair2 (gzip)",
             "outputs": [
-                {
-                    "name": "H",
-                    "type": "input"
-                },
-                {
-                    "name": "D",
-                    "type": "input"
-                },
-                {
-                    "name": "O",
-                    "type": "input"
-                },
                 {
                     "name": "MP",
                     "type": "input"
@@ -1014,43 +990,17 @@
                 "top": 650
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.1.1",
-            "tool_shed_repository": {
-                "changeset_revision": "c4b926c9831c",
-                "name": "cwpair2",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"binsize\": \"2\", \"down_distance\": \"80\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"method\": \"mode\", \"output_files\": \"all\", \"threshold_format_cond\": {\"threshold_format\": \"relative_threshold\", \"__current_case__\": 0, \"relative_threshold\": \"0.0\"}, \"up_distance\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_id": "cwpair2_gz",
+            "tool_state": "{\"binsize\": \"2\", \"down_distance\": \"80\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"method\": \"mode\", \"output_files\": \"matched_pair\", \"threshold_format_cond\": {\"threshold_format\": \"relative_threshold\", \"__current_case__\": 0, \"relative_threshold\": \"0.0\"}, \"up_distance\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.1",
             "type": "tool",
-            "uuid": "5725a0a5-55ad-4e8e-a073-6c52df2549c0",
+            "uuid": "6439e25c-f59d-41ff-a4db-646213fd2717",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "D",
-                    "uuid": "6664947d-45e1-43ca-ad31-1f7ff3f75846"
-                },
-                {
-                    "label": null,
-                    "output_name": "O",
-                    "uuid": "61a5cadb-78ce-4287-9b68-286ffd16c9e9"
-                },
-                {
-                    "label": null,
+                    "label": "MP",
                     "output_name": "MP",
-                    "uuid": "a2b13e0e-46a6-4cf1-b231-d3b53ef3fcfa"
-                },
-                {
-                    "label": null,
-                    "output_name": "statistics_output",
-                    "uuid": "b6023efa-bc91-403c-bc4a-08e3e0ddf538"
-                },
-                {
-                    "label": null,
-                    "output_name": "H",
-                    "uuid": "0102a03a-1da2-4420-9dbd-4ed341644c6e"
+                    "uuid": "d6d73733-db6c-44dc-bfeb-a5a0848e8d6a"
                 }
             ]
         },
@@ -1060,7 +1010,7 @@
             "errors": null,
             "id": 25,
             "input_connections": {
-                "input": {
+                "inputs": {
                     "id": 24,
                     "output_name": "MP"
                 }
@@ -1080,7 +1030,7 @@
             },
             "post_job_actions": {},
             "tool_id": "cwpair2_output_stats",
-            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inputs\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
             "uuid": "f4ceb80d-06c4-4cab-813d-c00aef335dc6",
