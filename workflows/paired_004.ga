@@ -195,7 +195,7 @@
             "name": "Input dataset R1 output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -210,13 +210,7 @@
             "type": "tool",
             "uuid": "2ae2ff54-76ae-4e54-a9e6-93aee43ce4b2",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "f32a799b-6902-428b-8cb1-228f08f62cdc"
-                }
-            ]
+            "workflow_outputs": []
         },
         "6": {
             "annotation": "",
@@ -234,7 +228,7 @@
             "name": "Input dataset R2 output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -249,13 +243,7 @@
             "type": "tool",
             "uuid": "4f86043e-36cd-4c14-9cf8-14a73b05406f",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "58ff8356-f551-4e41-921d-2f3718f77fa3"
-                }
-            ]
+            "workflow_outputs": []
         },
         "7": {
             "annotation": "",
@@ -393,7 +381,7 @@
             "name": "FastQC output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -408,13 +396,7 @@
             "type": "tool",
             "uuid": "be06bf93-4697-4626-9dd2-e85811a6dbff",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "f0d98136-b0cf-4e1e-8603-7911c6304c14"
-                }
-            ]
+            "workflow_outputs": []
         },
         "10": {
             "annotation": "",
@@ -432,7 +414,7 @@
             "name": "BWA-MEM single read output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -447,13 +429,7 @@
             "type": "tool",
             "uuid": "ab06a228-6284-41b8-8cd6-190115a7bedb",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "9cf77cd0-e2b7-403d-982c-5df5c9e7e0ef"
-                }
-            ]
+            "workflow_outputs": []
         },
         "11": {
             "annotation": "",
@@ -529,7 +505,7 @@
             "name": "FastQC output statistics 2",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -544,13 +520,7 @@
             "type": "tool",
             "uuid": "7a1ad7ea-bef2-4c50-b46f-c34b04b07ff4",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "ffe93ad1-df3c-4db6-bfe9-286cf54b1078"
-                }
-            ]
+            "workflow_outputs": []
         },
         "13": {
             "annotation": "",
@@ -568,7 +538,7 @@
             "name": "Mark Duplicates BAM output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -583,13 +553,7 @@
             "type": "tool",
             "uuid": "f38eeeb6-ab18-4546-8b32-39719484988f",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "aa4792f6-098f-49f8-b0f8-eb62569c4123"
-                }
-            ]
+            "workflow_outputs": []
         },
         "14": {
             "annotation": "",
@@ -663,7 +627,7 @@
             "name": "Filter SAM or BAM output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -678,13 +642,7 @@
             "type": "tool",
             "uuid": "2ae4d2a8-e1da-483c-8c30-6fdaf659dfc5",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "226fbf84-ef77-4caf-9f0d-d9161661537f"
-                }
-            ]
+            "workflow_outputs": []
         },
         "16": {
             "annotation": "",
@@ -789,7 +747,7 @@
             "name": "Bam to ScIdx output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -804,13 +762,7 @@
             "type": "tool",
             "uuid": "fee99956-f658-4490-9eff-c1a8bade085d",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "34f6fc35-cf97-4be2-b6d1-58a19008e8a0"
-                }
-            ]
+            "workflow_outputs": []
         },
         "19": {
             "annotation": "",
@@ -883,7 +835,7 @@
             "name": "Paired-end Histogram output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -898,13 +850,7 @@
             "type": "tool",
             "uuid": "8e2ff4f3-2dbb-4e31-b9b0-b1eb866c8ae5",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "fd3c11f0-ecf0-470c-9251-db6ec6ccd299"
-                }
-            ]
+            "workflow_outputs": []
         },
         "21": {
             "annotation": "",
@@ -922,7 +868,7 @@
             "name": "Genetrack output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -937,13 +883,7 @@
             "type": "tool",
             "uuid": "00cf3ea3-3a47-4dae-945c-597563481b0e",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "db5a6457-f8ce-4c80-870a-0d3fc6196755"
-                }
-            ]
+            "workflow_outputs": []
         },
         "22": {
             "annotation": "",
@@ -1016,7 +956,7 @@
             "name": "Intersect intervals output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -1031,13 +971,7 @@
             "type": "tool",
             "uuid": "ff09b974-27ae-4f36-bb5f-9678f6673535",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "569bb3a9-7d65-4943-b662-c0f757b372ed"
-                }
-            ]
+            "workflow_outputs": []
         },
         "24": {
             "annotation": "",
@@ -1136,7 +1070,7 @@
             "name": "CWPair2 output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -1151,13 +1085,7 @@
             "type": "tool",
             "uuid": "f4ceb80d-06c4-4cab-813d-c00aef335dc6",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "a464487d-53bc-4bd4-b509-6282e3f61480"
-                }
-            ]
+            "workflow_outputs": []
         },
         "26": {
             "annotation": "",
@@ -1198,9 +1126,9 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
+                    "label": "out_file1",
                     "output_name": "out_file1",
-                    "uuid": "275d9193-89f7-4492-822d-d0e06c34d0e9"
+                    "uuid": "dfe3b1f1-61ee-4a7a-9dfc-da179c4fcf08"
                 }
             ]
         },
@@ -1394,7 +1322,7 @@
             "name": "Extract Genomic DNA output statistics 2",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -1409,13 +1337,7 @@
             "type": "tool",
             "uuid": "ef5ca1bf-3f95-4999-8e62-14d4b11c9864",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "ab76f019-392c-4f5e-9643-2bf765734fda"
-                }
-            ]
+            "workflow_outputs": []
         },
         "32": {
             "annotation": "",
@@ -1433,7 +1355,7 @@
             "name": "Extract Genomic DNA output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -1448,13 +1370,7 @@
             "type": "tool",
             "uuid": "380ff0ca-5b39-4cc5-b355-bc2617a4e01e",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "d5711301-1455-4d0e-95d1-97252357fd42"
-                }
-            ]
+            "workflow_outputs": []
         },
         "33": {
             "annotation": "",
@@ -1548,7 +1464,7 @@
             "name": "RepeatMasker output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -1563,13 +1479,7 @@
             "type": "tool",
             "uuid": "3ed35875-ab5b-44a7-a7ee-a360f621e19a",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "d0726dd3-5acf-483f-bcc3-0748e14fd3ef"
-                }
-            ]
+            "workflow_outputs": []
         },
         "35": {
             "annotation": "",
@@ -1669,7 +1579,7 @@
             "name": "Meme output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -1684,13 +1594,7 @@
             "type": "tool",
             "uuid": "25bb82ad-81da-4750-9194-b5afc4b09e9b",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "f38d5449-b0ae-4c1d-987f-e8bb183e594f"
-                }
-            ]
+            "workflow_outputs": []
         },
         "37": {
             "annotation": "",
@@ -2033,7 +1937,7 @@
             "name": "Extract Genomic DNA output statistics 3",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -2048,13 +1952,7 @@
             "type": "tool",
             "uuid": "00574626-f736-4a90-8060-3953bfaaec6e",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "b5f42cc1-8034-4ec1-87c1-3c479ba829ba"
-                }
-            ]
+            "workflow_outputs": []
         },
         "45": {
             "annotation": "",
@@ -2222,7 +2120,7 @@
             "name": "Tag pileup frequency output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -2237,13 +2135,7 @@
             "type": "tool",
             "uuid": "ee643b74-65c9-4568-b013-7d7865b3b3f8",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "257376e8-5c88-42ea-96cd-b8e7045d784a"
-                }
-            ]
+            "workflow_outputs": []
         },
         "49": {
             "annotation": "",
@@ -2261,7 +2153,7 @@
             "name": "Fasta nucleotide color plot output statistics",
             "outputs": [
                 {
-                    "name": "output",
+                    "name": "payload",
                     "type": "txt"
                 }
             ],
@@ -2276,13 +2168,7 @@
             "type": "tool",
             "uuid": "2a74def7-a151-4e25-9036-80120590b784",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "440c23ca-31f1-4a77-b3d5-39ccf8238ccd"
-                }
-            ]
+            "workflow_outputs": []
         }
     },
     "tags": [],
