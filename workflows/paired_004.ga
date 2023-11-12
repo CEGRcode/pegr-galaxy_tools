@@ -727,25 +727,25 @@
         },
         "17": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/pe_histogram/pe_histogram/1.0.1",
+            "content_id": "scriptmanager_pe-stat",
             "errors": null,
             "id": 17,
             "input_connections": {
-                "input_bam": {
+                "input": {
                     "id": 14,
                     "output_name": "output1"
                 }
             },
             "inputs": [],
             "label": null,
-            "name": "Paired-end histogram",
+            "name": "ScriptManager: Paired-End Statistics",
             "outputs": [
                 {
-                    "name": "output1",
+                    "name": "output_png",
                     "type": "png"
                 },
                 {
-                    "name": "output2",
+                    "name": "output_tabular",
                     "type": "tabular"
                 }
             ],
@@ -753,35 +753,23 @@
                 "left": 1500,
                 "top": 1400
             },
-            "post_job_actions": {
-                "DeleteIntermediatesActionoutput1": {
-                    "action_arguments": {},
-                    "action_type": "DeleteIntermediatesAction",
-                    "output_name": "output1"
-                }
-            },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/pe_histogram/pe_histogram/1.0.1",
-            "tool_shed_repository": {
-                "changeset_revision": "bd1416eea1f0",
-                "name": "pe_histogram",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"input_bam\": {\"__class__\": \"ConnectedValue\"}, \"lower_limit\": null, \"upper_limit\": null, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.1",
+            "post_job_actions": {},
+            "tool_id": "scriptmanager_pe-stat",
+            "tool_state": "{\"dup_stats\": false, \"input\": {\"__class__\": \"ConnectedValue\"}, \"max\": \"1000\", \"min\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
             "type": "tool",
-            "uuid": "1da82b30-1eae-4b11-a247-c0be6a66d6f1",
+            "uuid": "9661bb5b-1aa8-44ad-be4c-bfae65a3c2d1",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "output1",
-                    "uuid": "d82fde47-2748-4aaa-9cda-08f79e825670"
+                    "label": "output_tabular",
+                    "output_name": "output_tabular",
+                    "uuid": "4b90b1cf-eba7-4d47-b816-93ff743746d6"
                 },
                 {
-                    "label": null,
-                    "output_name": "output2",
-                    "uuid": "5c917cc3-a863-4110-b665-50269ce590fc"
+                    "label": "output_png",
+                    "output_name": "output_png",
+                    "uuid": "d6cf985f-635b-49b5-abad-0906a401cf82"
                 }
             ]
         },
@@ -883,11 +871,11 @@
             "input_connections": {
                 "input_png": {
                     "id": 17,
-                    "output_name": "output1"
+                    "output_name": "output_png"
                 },
                 "input_tabular": {
                     "id": 17,
-                    "output_name": "output2"
+                    "output_name": "output_tabular"
                 }
             },
             "inputs": [],
