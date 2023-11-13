@@ -31,3 +31,5 @@ toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/2.7.1.1 = outp
 toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.2.0 = output_fimo
 toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.1 = output_tagPileup
 chexmix = output_chexmix
+scriptmanager_tag-pileup = output_tagPileup
+get_motif_logos_from_meme = output_meme

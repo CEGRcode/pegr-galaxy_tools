@@ -203,6 +203,10 @@ def get_mapped_reads(file_path, single=False):
     return get_reads(cmd)
 
 
+def get_motif_count(motif_logo_list):
+    return len(motif_logo_list) // 2
+
+
 def get_number_of_lines(file_path):
     i = 0
     with open(file_path) as fh:
@@ -360,6 +364,8 @@ def get_statistics(file_path, stats, **kwd):
                 s[k] = get_mapped_reads(file_path)
             elif k == 'mappedReadsSingle':
                 s['mappedReads'] = get_mapped_reads(file_path, single=True)
+            elif k == 'motifCount':
+                s[k] = get_motif_count(kwd.get('motif_logo_list', []))
             elif k == 'peakPairWis':
                 s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':

@@ -6,7 +6,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
 parser.add_argument('--history_id', dest='history_id', help='History id')
 parser.add_argument('--history_name', dest='history_name', help='History name')
-parser.add_argument('--input_heatmap', dest='input_heatmaps', action='append', nargs=5, help='Input heatmap datasets and attributes')
+parser.add_argument('--input_sense', dest='input_sense', help='Input sense dataset')
+parser.add_argument('--input_sense_id', dest='input_sense_id', help='Input sense dataset id')
+parser.add_argument('--input_sense_datatype', dest='input_sense_datatype', help='Input sense dataset datatype (i.e., tabular)')
+parser.add_argument('--input_anti', dest='input_anti', help='Input anti dataset')
+parser.add_argument('--input_anti_id', dest='input_anti_id', help='Input anti dataset id')
+parser.add_argument('--input_anti_datatype', dest='input_anti_datatype', help='Input anti dataset datatype (i.e., tabular)')
 parser.add_argument('--input_tabular', dest='input_tabular', help='Input tabular dataset')
 parser.add_argument('--input_tabular_id', dest='input_tabular_id', help='Input tabular dataset id')
 parser.add_argument('--input_tabular_datatype', dest='input_tabular_datatype', help='Input tabular dataset datatype (i.e., tabular)')
@@ -25,12 +30,12 @@ payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.histo
 statistics = []
 datasets = []
 
-# Generate statistics for heatmap dataset collection.
-input_heatmaps = args.input_heatmaps or []
-for input in input_heatmaps:
-    file_path, hid, input_id, input_datatype, dbkey = input
-    statistics.append({})
-    datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+# Generate statistics for sense dataset.
+statistics.append({})
+datasets.append(stats_util.get_datasets(args.config_file, args.input_sense_id, args.input_sense_datatype))
+# Generate statistics for anti dataset.
+statistics.append({})
+datasets.append(stats_util.get_datasets(args.config_file, args.input_anti_id, args.input_anti_datatype))
 # Generate statistics for tabular dataset.
 statistics.append({})
 datasets.append(stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype))

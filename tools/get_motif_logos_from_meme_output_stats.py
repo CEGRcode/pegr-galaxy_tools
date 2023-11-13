@@ -2,7 +2,7 @@
 import argparse
 import stats_util
 
-STATS = []
+STATS = ['motifCount']
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
@@ -19,7 +19,7 @@ parser.add_argument('--user_email', dest='user_email', help='Current user email'
 args = parser.parse_args()
 
 payload = None
-statistics = []
+statistics = [stats_util.get_statistics('', STATS, motif_logo_list=args.inputs)]
 datasets = []
 # Generate the statistics and datasets.
 if args.inputs is None:
@@ -30,7 +30,6 @@ else:
         if payload is None:
             # Initialize the payload.
             payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stats_tool_id, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
-        statistics.append(stats_util.get_statistics(file_path, STATS))
         datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 payload['statistics'] = statistics
 payload['datasets'] = datasets
