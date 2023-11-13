@@ -1,0 +1,79 @@
+<tool id="tss_pileup_frequency_output_stats" name="TSS pileup frequency output statistics" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command>
+        <![CDATA[
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #while $input_sense.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #while $input_anti.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #while $input_tabular.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #set history_id = $__app__.security.encode_id($input_tabular.history.id)
+            #set history_name = $input_tabular.history.name
+            #set job = $input_tabular.creating_job
+            #set job_state = $job.state
+            #if $job_state == 'error':
+                #set stderr = $job.stderr
+            #else:
+                #set stderr = ''
+            #end if
+            #set tool_id = $job.tool_id
+            #set tool_parameters = "input2X__identifier____SeP__" + str($input_tabular) + "__SeP__title__SeP__TSS__SeP__xlabel__SeP__TSS"
+            #set workflow_step = None
+            #set pjaas = $job.post_job_actions
+            #for pjaa in $pjaas:
+                #set pja = pjaa.post_job_action
+                #set workflow_step = $pja.workflow_step
+            #end for
+            python $__tool_directory__/tag_pileup_frequency_output_stats.py
+            --input_sense "$input_sense"
+            --input_sense_id "$__app__.security.encode_id($input_sense.id)"
+            --input_sense_datatype "$input_sense.ext"
+            --input_anti "$input_anti"
+            --input_anti_id "$__app__.security.encode_id($input_anti.id)"
+            --input_anti_datatype "$input_anti.ext"
+            --input_tabular "$input_tabular"
+            --input_tabular_id "$__app__.security.encode_id($input_tabular.id)"
+            --input_tabular_datatype "$input_tabular.ext"
+            --dbkey "$input_tabular.metadata.dbkey"
+            --config_file $__tool_directory__/stats_config.ini
+            --history_id "$history_id"
+            --history_name "$history_name"
+            --stats_tool_id "tss_pileup_frequency_output_stats"
+            --stderr "$stderr"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --user_email "$__user_email__"
+            #if $workflow_step is not None:
+                --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
+            #end if
+            --output "$output"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input_sense" type="data" format="tabular" label="sense input" />
+        <param name="input_anti" type="data" format="tabular" label="anti input" />
+        <param name="input_tabular" type="data" format="tabular" label="Tabular input" />
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Gets the display URI for the HTML output of the **Tag pileup frequency** tool in the **CEGR Galaxy ChIP-exo**
+pipeline.  A JSON dictionary containing the run, sample and this URI is sent via a POST to the PEGR REST
+API where the information is stored to support the CEGR ChIP-exo statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
