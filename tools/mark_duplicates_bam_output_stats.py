@@ -2,7 +2,9 @@
 import argparse
 import stats_util
 
-STATS = ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
+#STATS = ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
+#STATS = ['getMetrics']
+STATS = ['mappingStatsFromBamPaired']
 
 stats_util.check_samtools()
 

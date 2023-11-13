@@ -169,14 +169,6 @@ def get_history_url(config_file, historyId):
     return '%s/histories/view?id=%s' % (defaults['GALAXY_BASE_URL'],historyId)
 
 
-def get_deduplicated_uniquely_mapped_reads(file_path, single=False):
-    if single:
-        cmd = "samtools view -F 4 -q 5 -c %s" % file_path
-    else:
-        cmd = "samtools view -f 0x41 -F 0x404 -q 5 -c %s" % file_path
-    return get_reads(cmd)
-
-
 def get_galaxy_instance(api_key, url):
     return galaxy.GalaxyInstance(url=url, key=api_key)
 
@@ -206,13 +198,6 @@ def get_genome_size(chrom_lengths_dict):
         genome_size += v
     return genome_size
 
-
-def get_mapped_reads(file_path, single=False):
-    if single:
-        cmd = "samtools view -F 4 -c %s" % file_path
-    else:
-        cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
-    return get_reads(cmd)
 
 def get_peak_pair_wis(file_path):
     """
@@ -357,6 +342,29 @@ def get_sample_from_history_name(history_name, exit_on_error=False):
         return 'unknown'
     return sample
 
+def get_markdup_metrics(file_path):
+    """
+    Parse metrics output file from Picard's MarkDuplicates (Unused by paired_004 but retained for possible future use)
+        - Method: loop through file until encountering the key string (line with all the field names, second to last filename at time of this being written)
+    """
+    with openfile(file_path, 'rt') as reader:
+        key_str = []
+        for line in reader:
+            # key string defined (in last loop), this line is metrics values string
+            if (len(key_str)>10):
+                metrics = {}
+                tokens = line.split('\t')
+                # map key string values to metric values and return
+                for i,k in enumerate(key_str):
+                    metrics.update({k:tokens[i]})
+                # may need to type the metrics here
+                return(metrics)
+            # key string encountered - split tokens and define
+            elif (line.startswith('LIBRARY')):
+                key_str = line.split('\t')
+    # return default metrics values
+    return({'LIBRARY':''})
+
 
 def get_statistics(file_path, stats, **kwd):
     # ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
@@ -368,33 +376,62 @@ def get_statistics(file_path, stats, **kwd):
                 # so populate the statistics with the read.
                 s['read'] = get_read_from_fastqc_file(file_path)
                 s[k] = get_adapter_dimer_count(file_path)
-            elif k == 'dedupUniquelyMappedReads':
-                s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
-            elif k == 'dedupUniquelyMappedReadsSingle':
-                s['dedupUniquelyMappedReads'] = get_deduplicated_uniquely_mapped_reads(file_path, single=True)
             elif k == 'genomeCoverage':
                 chrom_lengths_file = kwd.get('chrom_lengths_file', None)
                 if chrom_lengths_file is None:
                     stop_err('Required chrom_lengths_file parameter not received!')
                 s[k] = get_genome_coverage(file_path, chrom_lengths_file)
-            elif k == 'mappedReads':
-                s[k] = get_mapped_reads(file_path)
-            elif k == 'mappedReadsSingle':
-                s['mappedReads'] = get_mapped_reads(file_path, single=True)
             elif k == 'peakPairWis':
                 s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':
                 return get_peak_stats(file_path)
             elif k == 'peHistogram':
                 return get_pe_histogram_stats(file_path)
-            elif k == 'totalReads':
-                s[k] = get_total_reads(file_path)
-            elif k == 'totalReadsSingle':
-                s['totalReads'] = get_total_reads(file_path, single=True)
-            elif k == 'uniquelyMappedReads':
-                s[k] = get_uniquely_mapped_reads(file_path)
-            elif k == 'uniquelyMappedReadsSingle':
-                s['uniquelyMappedReads'] = get_uniquely_mapped_reads(file_path, single=True)
+            elif k == 'mappingStatsFromBamSingle':  # single
+                s['totalReads'] =                 get_reads("samtools view -c           %s" % file_path)
+                s['uniquelyMappedReads'] =        get_reads("samtools view -c -F 4 -q 5 %s" % file_path)
+                s['mappedReads'] =                get_reads("samtools view -c -F 4      %s" % file_path)
+                s['dedupUniquelyMappedReads'] =   get_reads("samtools view -c -F 4 -q 5 %s" % file_path)
+            elif k == 'mappingStatsFromBamPaired':  # paired
+                # R1
+                s['totalReads'] =                 get_reads("samtools view -c -f 0x40 -F 4 -q 5     %s" % file_path)
+                s['uniquelyMappedReads'] =        get_reads("samtools view -c -f 0x40 -F 4          %s" % file_path)
+                s['mappedReads'] =                get_reads("samtools view -c -f 0x40               %s" % file_path)
+                s['dedupUniquelyMappedReads'] =   get_reads("samtools view -c -f 0x41 -F 0x404 -q 5 %s" % file_path)
+                # R2
+                s['totalReadsR2'] =               get_reads("samtools view -c -f 0x80 -F 4 -q 5     %s" % file_path)
+                s['uniquelyMappedReadsR2'] =      get_reads("samtools view -c -f 0x80 -F 4          %s" % file_path)
+                s['mappedReadsR2'] =              get_reads("samtools view -c -f 0x80               %s" % file_path)
+                s['dedupUniquelyMappedReadsR2'] = get_reads("samtools view -c -f 0x81 -F 0x404 -q 5 %s" % file_path)
+            elif k == 'dedupUniquelyMappedReadsSingle':  # succeeded by mappingStatsFromBamSingle
+                s['dedupUniquelyMappedReads'] = get_reads("samtools view -c -F 4 -q 5 %s" % file_path)
+            elif k == 'dedupUniquelyMappedReads':  # succeeded by mappingStatsFromBamPaired
+                s[k] = get_reads("samtools view -c -f 0x41 -F 0x404 -q 5 %s" % file_path)
+            elif k == 'mappedReadsSingle':  # succeeded by mappingStatsFromBamSingle
+                s['mappedReads'] = get_reads("samtools view -c -F 4 %s" % file_path)
+            elif k == 'mappedReads':  # succeeded by mappingStatsFromBamPaired
+                s[k] = get_reads("samtools view -c -f 0x40 -F 4 %s" % file_path)
+            elif k == 'totalReadsSingle':  # succeeded by mappingStatsFromBamSingle
+                s['totalReads'] = get_reads("samtools view -c %s" % file_path)
+            elif k == 'totalReads':  # succeeded by mappingStatsFromBamPaired
+                s[k] = get_reads("samtools view -c -f 0x40 %s" % file_path)
+            elif k == 'uniquelyMappedReadsSingle':  # succeeded by mappingStatsFromBamSingle
+                s['uniquelyMappedReads'] = get_reads("samtools view -c -F 4 -q 5 %s" % file_path)
+            elif k == 'uniquelyMappedReads':  # succeeded by mappingStatsFromBamPaired
+                s[k] = get_reads("samtools view -c -f 0x40 -F 4 -q 5 %s" % file_path)
+            # elif k == 'getMetricsSingle':  # picard-style mapping statistics
+            #     metrics = get_markdup_metrics(file_path)
+            #     s['UNPAIRED_READS_EXAMINED'] = metrics['UNPAIRED_READS_EXAMINED']
+            #     s['UNPAIRED_READ_DUPLICATES'] = metrics['UNPAIRED_READ_DUPLICATES']
+            #     s['UNMAPPED_READS'] = metrics['UNMAPPED_READS']
+            #     s['ESTIMATED_LIBRARY_SIZE'] = metrics['ESTIMATED_LIBRARY_SIZE']
+            # elif k == 'getMetrics':
+            #     metrics = get_markdup_metrics(file_path)
+            #     s['READ_PAIRS_EXAMINED'] = metrics['READ_PAIRS_EXAMINED']
+            #     s['READ_PAIR_DUPLICATES'] = metrics['READ_PAIR_DUPLICATES']
+            #     s['UNMAPPED_READS'] = metrics['UNMAPPED_READS']
+            #     s['ESTIMATED_LIBRARY_SIZE'] = metrics['ESTIMATED_LIBRARY_SIZE']
+
     except Exception as e:
         stop_err(str(e))
     return s
@@ -410,23 +447,6 @@ def get_tool_category(config_file, tool_id):
     lc_tool_id = tool_id.lower()
     category_map = get_config_settings(config_file, section='tool_categories')
     return category_map.get(lc_tool_id, 'Unknown')
-
-
-def get_total_reads(file_path, single=False):
-    if single:
-        cmd = "samtools view -c %s" % file_path
-    else:
-        cmd = "samtools view -f 0x40 -c %s" % file_path
-    return get_reads(cmd)
-
-
-def get_uniquely_mapped_reads(file_path, single=False):
-    if single:
-        cmd = "samtools view -F 4 -q 5 -c %s" % file_path
-    else:
-        cmd = "samtools view -f 0x40 -F 4 -q 5 -c %s" % file_path
-    return get_reads(cmd)
-
 
 def get_workflow_id(config_file, history_name):
     workflow_name = get_workflow_name_from_history_name(history_name)
