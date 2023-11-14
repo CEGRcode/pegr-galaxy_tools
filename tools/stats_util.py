@@ -345,8 +345,8 @@ def get_sample_from_history_name(history_name, exit_on_error=False):
 def get_markdup_metrics(file_path):
     """
     Parse metrics output file from Picard's MarkDuplicates (Unused by paired_004 but retained for possible future use)
-        - Method: loop through file until encountering the key string (line with all the field names, second to last filename at time of this being written)
     """
+    # Method: loop through file until encountering the key string (line with all the field names, second to last filename at time of this being written)
     with openfile(file_path, 'rt') as reader:
         key_str = []
         for line in reader:
@@ -387,19 +387,15 @@ def get_statistics(file_path, stats, **kwd):
                 return get_peak_stats(file_path)
             elif k == 'peHistogram':
                 return get_pe_histogram_stats(file_path)
-            elif k == 'mappingStatsFromBamSingle':  # single
-                s['totalReads'] =                 get_reads("samtools view -c           %s" % file_path)
-                s['uniquelyMappedReads'] =        get_reads("samtools view -c -F 4 -q 5 %s" % file_path)
-                s['mappedReads'] =                get_reads("samtools view -c -F 4      %s" % file_path)
-                s['dedupUniquelyMappedReads'] =   get_reads("samtools view -c -F 4 -q 5 %s" % file_path)
-            elif k == 'mappingStatsFromBamPaired':  # paired
+            elif k == 'totalReadsFromBam':  # bwa output stats
+                s['totalReads'] =                 get_reads("samtools view -c -f 0x40 -F 4 -q 5     %s" % file_path) # R1
+                s['totalReadsR2'] =               get_reads("samtools view -c -f 0x80 -F 4 -q 5     %s" % file_path) # R2
+            elif k == 'mappingStatsFromBamPaired':  # markdup output stats
                 # R1
-                s['totalReads'] =                 get_reads("samtools view -c -f 0x40 -F 4 -q 5     %s" % file_path)
                 s['uniquelyMappedReads'] =        get_reads("samtools view -c -f 0x40 -F 4          %s" % file_path)
                 s['mappedReads'] =                get_reads("samtools view -c -f 0x40               %s" % file_path)
                 s['dedupUniquelyMappedReads'] =   get_reads("samtools view -c -f 0x41 -F 0x404 -q 5 %s" % file_path)
                 # R2
-                s['totalReadsR2'] =               get_reads("samtools view -c -f 0x80 -F 4 -q 5     %s" % file_path)
                 s['uniquelyMappedReadsR2'] =      get_reads("samtools view -c -f 0x80 -F 4          %s" % file_path)
                 s['mappedReadsR2'] =              get_reads("samtools view -c -f 0x80               %s" % file_path)
                 s['dedupUniquelyMappedReadsR2'] = get_reads("samtools view -c -f 0x81 -F 0x404 -q 5 %s" % file_path)
