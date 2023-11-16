@@ -47,6 +47,20 @@ def openfile(filepath, mode='r'):
         return gzip.open(filepath, mode) 
     return open(filepath, mode)
 
+
+def get_number_of_lines(file_path):
+    """
+    Get line count using wc -l for optionally gzipped file
+    """
+    line_ct = 0
+    if (is_gz_file(file_path)):
+        gz_process = subprocess.Popen(('gzip', '-dc', file_path), stdout=subprocess.PIPE)
+        line_ct = int(subprocess.check_output(('wc', '-l'), stdin=gz_process.stdout).strip().split(b' ')[0])
+    else:
+        line_ct = int(subprocess.check_output(('wc', '-l', file_path)).strip().split(b' ')[0])
+    return (line_ct)
+
+
 def check_response(pegr_url, payload, response):
     try:
         s = json.dumps(payload)
@@ -197,19 +211,6 @@ def get_genome_size(chrom_lengths_dict):
     for k, v in chrom_lengths_dict.items():
         genome_size += v
     return genome_size
-
-
-def get_peak_pair_wis(file_path):
-    """
-    Get line count using wc -l for optionally gzipped file
-    """
-    line_ct = 0
-    if (is_gz_file(file_path)):
-        gz_process = subprocess.Popen(('gzip', '-dc', file_path), stdout=subprocess.PIPE)
-        line_ct = int(subprocess.check_output(('wc', '-l'), stdin=gz_process.stdout).strip().split(b' ')[0])
-    else:
-        line_ct = int(subprocess.check_output(('wc', '-l', file_path)).strip().split(b' ')[0])
-    return (line_ct)
 
 
 def get_peak_stats(file_path):
@@ -382,7 +383,7 @@ def get_statistics(file_path, stats, **kwd):
                     stop_err('Required chrom_lengths_file parameter not received!')
                 s[k] = get_genome_coverage(file_path, chrom_lengths_file)
             elif k == 'peakPairWis':
-                s[k] = get_peak_pair_wis(file_path)
+                s[k] = get_number_of_lines(file_path)
             elif k == 'peakStats':
                 return get_peak_stats(file_path)
             elif k == 'peHistogram':
