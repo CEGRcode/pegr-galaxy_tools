@@ -13,18 +13,17 @@
             #set tool_id = 'unknown'
             #set tool_parameters = ''
             #set workflow_step = None
-            #for $i in $forward:
-                #while $i.dataset.state in $non_ready_states:
+            #for $f, $r in $input:
+                #while $f.dataset.state in $non_ready_states:
                     time.sleep(60)
                 #end while
-            #end for
-            #for $i in $reverse:
-                #while $i.dataset.state in $non_ready_states:
+
+                #while $r.dataset.state in $non_ready_states:
                     time.sleep(60)
                 #end while
             #end for
             python $__tool_directory__/get_motif_logos_from_meme_output_stats.py
-            #for $i, $f in enumerate($forward):
+            #for $f, $r in $input:
                 #if history_id is None:
                     #set history_id = $__app__.security.encode_id($f.history.id)
                     #set history_name = $f.history.name
@@ -49,7 +48,6 @@
                     #end for
                 #end if
 
-                #set r = $reverse[$i]
                 #if history_id is None:
                     #set history_id = $__app__.security.encode_id($r.history.id)
                     #set history_name = $r.history.name
@@ -89,8 +87,7 @@
         ]]>
     </command>
     <inputs>
-        <param name="forward" type="data_collection" collection_type="list" format="svg" label="forward SVG input" />
-        <param name="reverse" type="data_collection" collection_type="list" format="svg" label="reverse SVG input" />
+        <param name="input" type="data_collection" collection_type="list:paired" format="svg" label="SVG input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />
