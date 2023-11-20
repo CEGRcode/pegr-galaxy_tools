@@ -17,10 +17,7 @@ parser.add_argument('--user_email', dest='user_email', help='Current user email'
 args = parser.parse_args()
 
 tool_parameters = ""
-if args.tool_id == 'scidx_to_bigwig_forward':
-    workflow_step_id = 'forward_bigwig'
-elif args.tool_id == 'scidx_to_bigwig_reverse':
-    workflow_step_id = 'reverse_bigwig'
+workflow_step_id = args.tool_id
 # Initialize the payload.
 stderr = ''
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.stats_tool_id, stderr, args.tool_id, tool_parameters, args.user_email, workflow_step_id)

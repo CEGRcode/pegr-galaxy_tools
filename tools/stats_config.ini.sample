@@ -35,6 +35,8 @@ get_motif_logos_from_meme = output_meme
 meme_fimo = output_fimo
 bed-to-fasta = output_extractGenomicDNA
 scriptmanager_four-color = output_fourColorPlot
+forward_bigwig = output_bigwigForward
+reverse_bigwig = output_bigwigReverse
 
 [tool_categories_archive]
 toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.1 = output_bamToScidx
