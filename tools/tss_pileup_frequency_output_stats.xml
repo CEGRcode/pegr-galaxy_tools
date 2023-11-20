@@ -1,4 +1,4 @@
-<tool id="tag_pileup_frequency_output_stats" name="Tag pileup frequency output statistics" version="1.0.0">
+<tool id="tss_pileup_frequency_output_stats" name="TSS pileup frequency output statistics" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
@@ -26,11 +26,7 @@
                 #set stderr = ''
             #end if
             #set tool_id = $job.tool_id
-            #set tool_parameters = ""
-            #for $p in $job.parameters:
-                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
-                #set tool_parameters = $tool_parameters + "__SeP__" + str($p.value)
-            #end for
+            #set tool_parameters = "input2X__identifier____SeP__" + str($input_tabular) + "__SeP__title__SeP__TSS__SeP__xlabel__SeP__TSS"
             #set workflow_step = None
             #set pjaas = $job.post_job_actions
             #for pjaa in $pjaas:
@@ -51,7 +47,7 @@
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
-            --stats_tool_id "tag_pileup_frequency_output_stats"
+            --stats_tool_id "tss_pileup_frequency_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
@@ -59,7 +55,7 @@
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$payload"
+            --output "$output"
         ]]>
     </command>
     <inputs>
@@ -68,7 +64,7 @@
         <param name="input_tabular" type="data" format="tabular" label="Tabular input" />
     </inputs>
     <outputs>
-        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
+        <data name="output" format="txt" />
     </outputs>
     <tests>
     </tests>

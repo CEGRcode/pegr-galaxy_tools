@@ -1,8 +1,9 @@
-<tool id="repeatmasker_wrapper_output_stats" name="RepeatMasker output statistics" version="1.0.0">
+<tool id="bed_to_fasta_output_stats" name="BED to FASTA output statistics" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
     </macros>
+
     <command>
         <![CDATA[
             #import time
@@ -18,9 +19,9 @@
                     time.sleep(60)
                 #end while
             #end for
-            python $__tool_directory__/repeatmasker_wrapper_output_stats.py
+            python $__tool_directory__/bed_to_fasta_output_stats.py
             #for $i in $input:
-                #if history_id is None:
+                #if $history_id is None:
                     #set history_id = $__app__.security.encode_id($i.history.id)
                     #set history_name = $i.history.name
                 #end if
@@ -36,7 +37,7 @@
                     #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
                     #set tool_parameters = $tool_parameters + "__SeP__" + str($p.value)
                 #end for
-                #if workflow_step is None:
+                #if $workflow_step is None:
                     #set pjaas = $job.post_job_actions
                     #for pjaa in $pjaas:
                         #set pja = pjaa.post_job_action
@@ -47,7 +48,7 @@
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
-            --stats_tool_id "repeatmasker_wrapper_output_stats"
+            --stats_tool_id "bed_to_fasta_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
@@ -55,23 +56,19 @@
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$payload"
+            --output "$output"
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data_collection" collection_type="list" format="fasta" label="Fasta input" />
+        <param name="input" type="data_collection" collection_type="list" format="fasta" label="FASTA input" />
     </inputs>
     <outputs>
-        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
+        <data name="output" format="txt" />
     </outputs>
     <tests>
     </tests>
     <help>
-**What it does**
 
-Gets the display URI for the HTML output of the **RepeatMasker** tool in the **CEGR Galaxy ChIP-exo** pipeline.
-A JSON dictionary containing the run, sample and this URI is sent via a POST to the PEGR REST API where the
-information is stored to support the CEGR ChIP-exo statistics reports.
     </help>
     <expand macro="citations" />
 </tool>

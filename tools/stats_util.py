@@ -213,6 +213,10 @@ def get_genome_size(chrom_lengths_dict):
     return genome_size
 
 
+def get_motif_count(motif_logo_list):
+    return len(motif_logo_list) // 2
+
+
 def get_peak_stats(file_path):
     """
     The received file_path must point to a gff file and
@@ -382,6 +386,8 @@ def get_statistics(file_path, stats, **kwd):
                 if chrom_lengths_file is None:
                     stop_err('Required chrom_lengths_file parameter not received!')
                 s[k] = get_genome_coverage(file_path, chrom_lengths_file)
+            elif k == 'motifCount':
+                s[k] = get_motif_count(kwd.get('motif_logo_list', []))
             elif k == 'peakPairWis':
                 s[k] = get_number_of_lines(file_path)
             elif k == 'peakStats':
