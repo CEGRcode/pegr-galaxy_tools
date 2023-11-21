@@ -35,7 +35,7 @@ The tool is compatible with most of the Galaxy tools and will send meta data inf
                 #set workflow_step = $pja.workflow_step
             #end for
             python $__tool_directory__/galaxy_post_pegr.py
-	    --config_file $config_input
+            --config_file $config_input
             --input "$input"
             --input_id "$__app__.security.encode_id($input.id)"
             --input_datatype "$input.ext"
@@ -44,7 +44,8 @@ The tool is compatible with most of the Galaxy tools and will send meta data inf
             --history_name "$history_name"
             --stats_tool_id "$tool_id"
             --stderr "$stderr"
-            --tool_id "galaxy_post_pegr"
+            --tool_id "$tool_id"
+            --tool_category "galaxy_post_pegr"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:

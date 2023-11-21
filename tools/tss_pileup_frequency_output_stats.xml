@@ -50,6 +50,7 @@
             --stats_tool_id "tss_pileup_frequency_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_tagPileup"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:

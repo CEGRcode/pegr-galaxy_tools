@@ -11,7 +11,7 @@
                 time.sleep(60)
             #end while
             #set history_id = $__app__.security.encode_id($input.history.id)
-	    #set history_name = $input.history.name
+            #set history_name = $input.history.name
             #set job = $input.creating_job                                                                                              
             #set job_state = $job.state                                                                                                      
             #if $job_state == 'error':                                                                                                       
@@ -39,12 +39,12 @@
             --dbkey "$input.metadata.dbkey"
             --history_id "$history_id"
             --history_name "$history_name"
-	    --stats_tool_id "chexmix_output_stats"
-	    --stderr "$stderr"
-	    --tool_id "$tool_id"
-	    --tool_parameters "$tool_parameters"
-	    --user_email "$__user_email__"
-	    #if $workflow_step is not None:
+            --stats_tool_id "chexmix_output_stats"
+            --stderr "$stderr"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --user_email "$__user_email__"
+            #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
             --output "$payload"

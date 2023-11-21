@@ -48,6 +48,7 @@
             --stats_tool_id "fastqc_output_stats2"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_fastqc"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:

@@ -121,7 +121,7 @@ def get_adapter_dimer_count(file_path):
     return float(adapter_dimer_count)
 
 
-def get_base_json_dict(config_file, dbkey, history_id, history_name, stats_tool_id, stderr, tool_id, tool_parameters, user_email, workflow_step_id):
+def get_base_json_dict(config_file, dbkey, history_id, history_name, stats_tool_id, stderr, tool_id, tool_category, tool_parameters, user_email, workflow_step_id):
     d = {}
     d['genome'] = dbkey
     d['historyId'] = history_id
@@ -129,7 +129,7 @@ def get_base_json_dict(config_file, dbkey, history_id, history_name, stats_tool_
     d['run'] = get_run_from_history_name(history_name)
     d['sample'] = get_sample_from_history_name(history_name)
     d['statsToolId'] = stats_tool_id
-    d['toolCategory'] = get_tool_category(config_file, tool_id)
+    d['toolCategory'] = tool_category
     d['toolStderr'] = stderr
     d['toolId'] = tool_id
     d['userEmail'] = user_email
@@ -194,7 +194,7 @@ def get_galaxy_url(config_file):
 
 def get_genome_coverage(file_path, chrom_lengths_file):
     """
-    Generate the genomce coverage for the dataset located at file_path.
+    Generate the genome coverage for the dataset located at file_path.
     """
     lines_in_input = float(get_number_of_lines(file_path))
     chrom_lengths = get_chrom_lengths(chrom_lengths_file)
@@ -445,11 +445,6 @@ def get_tmp_filename(dir=None, suffix=None):
     os.close(fd)
     return name
 
-
-def get_tool_category(config_file, tool_id):
-    lc_tool_id = tool_id.lower()
-    category_map = get_config_settings(config_file, section='tool_categories')
-    return category_map.get(lc_tool_id, 'Unknown')
 
 def get_workflow_id(config_file, history_name):
     workflow_name = get_workflow_name_from_history_name(history_name)

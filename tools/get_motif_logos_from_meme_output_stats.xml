@@ -78,6 +78,7 @@
             --stats_tool_id "get_motif_logos_from_meme_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_motifLogos"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:

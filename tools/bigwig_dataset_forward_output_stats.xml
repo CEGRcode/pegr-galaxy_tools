@@ -3,7 +3,7 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    <command>
+    <command><![CDATA[
         #import time
         #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
         #while $input.dataset.state in $non_ready_states:
@@ -11,6 +11,14 @@
         #end while
         #set history_id = $__app__.security.encode_id($input.history.id)
         #set history_name = $input.history.name
+        #set job = $input.creating_job
+        #set job_state = $job.state
+        #if $job_state == 'error':
+            #set stderr = $job.stderr
+        #else:
+            #set stderr = ''
+        #end if
+        #set tool_id = $job.tool_id
         python $__tool_directory__/bigwig_dataset_output_stats.py
         --config_file $__tool_directory__/stats_config.ini
         --input "$input"
@@ -20,10 +28,11 @@
         --history_id "$history_id"
         --history_name "$history_name"
         --stats_tool_id "bigwig_dataset_forward_output_stats"
-        --tool_id "forward_bigwig"
+        --tool_id "$tool_id"
+        --tool_category "output_bigwigForward"
         --user_email "$__user_email__"
         --output "$payload"
-    </command>
+    ]]></command>
     <inputs>
         <param name="input" type="data" format="bigwig" label="BigWig (Forward)" />
     </inputs>
