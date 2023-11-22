@@ -9,9 +9,6 @@ parser.add_argument('--config_file', dest='config_file', help='stats_config.ini'
 parser.add_argument('--dbkey', dest='dbkey', help='Input dbkey')
 parser.add_argument('--history_id', dest='history_id', help='History name')
 parser.add_argument('--history_name', dest='history_name', help='History name')
-parser.add_argument('--input_png', dest='input_png', help='Input dataset')
-parser.add_argument('--input_png_datatype', dest='input_png_datatype', help='Input dataset datatype')
-parser.add_argument('--input_png_id', dest='input_png_id', help='Encoded input_png dataset id')
 parser.add_argument('--input_tabular', dest='input_tabular', help='Input dataset')
 parser.add_argument('--input_tabular_datatype', dest='input_tabular_datatype', help='Input dataset datatype')
 parser.add_argument('--input_tabular_id', dest='input_tabular_id', help='Encoded input_tabular dataset id')
@@ -34,9 +31,7 @@ statistics.append({})
 # Generate the statistics for the tabular dataset.
 statistics.append(stats_util.get_statistics(args.input_tabular, STATS))
 payload['statistics'] = statistics
-d1 = stats_util.get_datasets(args.config_file, args.input_png_id, args.input_png_datatype)
-d2 = stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype)
-payload['datasets'] = [d1, d2]
+payload['datasets'] = [stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype)]
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
