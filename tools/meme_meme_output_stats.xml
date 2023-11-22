@@ -23,6 +23,16 @@
                     time.sleep(60)
                 #end while
             #end for
+            #for $i in $input_svg:
+                #for $f, $r in $i:
+                    #while $f.dataset.state in $non_ready_states:
+                        time.sleep(60)
+                    #end while
+                    #while $r.dataset.state in $non_ready_states:
+                        time.sleep(60)
+                    #end while
+                #end for
+            #end for
             python $__tool_directory__/meme_meme_output_stats.py
             #for $i in $input_txt:
                 #if history_id is None:
@@ -52,12 +62,19 @@
             #for $i in $input_html:
                 --input_html "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
             #end for
+            #for $i in $input_svg:
+                #for $f, $r in $i:
+                    --input_forward_svg "${f}" "${f.hid}" "$__app__.security.encode_id($f.id)" "$f.ext"_forward "$f.metadata.dbkey"
+                    --input_reverse_svg "${r}" "${r.hid}" "$__app__.security.encode_id($r.id)" "$r.ext"_reverse "$r.metadata.dbkey"
+                #end for
+            #end for
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
             --stats_tool_id "meme_meme_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_meme"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:
@@ -69,6 +86,7 @@
     <inputs>
         <param name="input_txt" type="data_collection" collection_type="list" format="txt" label="Text input" />
         <param name="input_html" type="data_collection" collection_type="list" format="html" label="HTML input" />
+        <param name="input_svg" type="data_collection" collection_type="list:list:paired" format="svg" label="SVG input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />
