@@ -13,13 +13,13 @@
             #set tool_id = 'unknown'
             #set tool_parameters = ''
             #set workflow_step = None
-            #for $ii in $input:
+            #for $ii in $inputs:
                 #while $ii.dataset.state in $non_ready_states:
                     time.sleep(60)
                 #end while
             #end for
             python $__tool_directory__/cwpair2_output_stats.py
-            #for $i in $input:
+            #for $i in $inputs:
                 #if history_id is None:
                     #set history_id = $__app__.security.encode_id($i.history.id)
                     #set history_name = $i.history.name
@@ -50,19 +50,20 @@
             --stats_tool_id "cwpair2_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_cwpair2"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$output"
+            --output "$payload"
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data_collection" collection_type="list" format="gff" label="Gff input" />
+        <param name="inputs" type="data_collection" collection_type="list" format="gff" label="Gff input collection (MP)" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>

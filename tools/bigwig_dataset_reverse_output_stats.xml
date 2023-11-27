@@ -1,9 +1,9 @@
-<tool id="input_dataset_r1_output_stats" name="Input dataset R1 output statistics" version="1.0.0">
+<tool id="bigwig_dataset_reverse_output_stats" name="BigWig (reverse) output statistics" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
     </macros>
-    <command>
+    <command><![CDATA[
         #import time
         #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
         #while $input.dataset.state in $non_ready_states:
@@ -11,7 +11,15 @@
         #end while
         #set history_id = $__app__.security.encode_id($input.history.id)
         #set history_name = $input.history.name
-        python $__tool_directory__/input_dataset_output_stats.py
+        #set job = $input.creating_job
+        #set job_state = $job.state
+        #if $job_state == 'error':
+            #set stderr = $job.stderr
+        #else:
+            #set stderr = ''
+        #end if
+        #set tool_id = $job.tool_id
+        python $__tool_directory__/bigwig_dataset_output_stats.py
         --config_file $__tool_directory__/stats_config.ini
         --input "$input"
         --input_id "$__app__.security.encode_id($input.id)"
@@ -19,14 +27,14 @@
         --dbkey "$input.metadata.dbkey"
         --history_id "$history_id"
         --history_name "$history_name"
-        --stats_tool_id "input_dataset_r1_output_stats"
+        --stats_tool_id "bigwig_dataset_reverse_output_stats"
         --tool_id "$tool_id"
-        --tool_category "output_fastqRead1"
+        --tool_category "output_bigwigReverse"
         --user_email "$__user_email__"
         --output "$payload"
-    </command>
+    ]]></command>
     <inputs>
-        <param name="input" type="data" format="fastq.gz" label="Fastqsanger.gz input" />
+        <param name="input" type="data" format="bigwig" label="BigWig (Reverse)" />
     </inputs>
     <outputs>
         <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
@@ -36,7 +44,7 @@
     <help>
 **What it does**
 
-Generates statistics on the Read1 input dataset in the **CEGR Galaxy ChIP-exo** pipeline.
+Generates statistics on the BigWig(Forward) dataset in the **CEGR Galaxy ChIP-exo** pipeline.
 
 A JSON dictionary containing the run, sample and genome reference is sent via a POST
 to the PEGR REST API where the information is stored to support the CEGR ChIP-exo
