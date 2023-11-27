@@ -50,19 +50,20 @@
             --stats_tool_id "repeatmasker_wrapper_output_stats2"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_repeatMasker"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$output"
+            --output "$payload"
         ]]>
     </command>
     <inputs>
         <param name="input" type="data_collection" collection_type="list" format="fasta" label="Fasta input" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>

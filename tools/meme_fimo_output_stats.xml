@@ -58,12 +58,13 @@
             --stats_tool_id "meme_fimo_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_fimo"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$output"
+            --output "$payload"
         ]]>
     </command>
     <inputs>
@@ -71,7 +72,7 @@
         <param name="input_xml" type="data" multiple="true" format="cisml" label="XML (cisml) input" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>

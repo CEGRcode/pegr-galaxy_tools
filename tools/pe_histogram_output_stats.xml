@@ -7,15 +7,12 @@
         <![CDATA[
             #import time
             #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
-            #while $input_png.dataset.state in $non_ready_states:
-                time.sleep(60)
-            #end while
             #while $input_tabular.dataset.state in $non_ready_states:
                 time.sleep(60)
             #end while
-            #set history_id = $__app__.security.encode_id($input_png.history.id)
-            #set history_name = $input_png.history.name
-            #set job = $input_png.creating_job
+            #set history_id = $__app__.security.encode_id($input_tabular.history.id)
+            #set history_name = $input_tabular.history.name
+            #set job = $input_tabular.creating_job
             #set job_state = $job.state
             #if $job_state == 'error':
                 #set stderr = $job.stderr
@@ -36,32 +33,29 @@
             #end for
             python $__tool_directory__/pe_histogram_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
-            --input_png "$input_png"
-            --input_png_id "$__app__.security.encode_id($input_png.id)"
-            --input_png_datatype "$input_png.ext"
             --input_tabular "$input_tabular"
             --input_tabular_id "$__app__.security.encode_id($input_tabular.id)"
             --input_tabular_datatype "$input_tabular.ext"
-            --dbkey "$input_png.metadata.dbkey"
+            --dbkey "$input_tabular.metadata.dbkey"
             --history_id "$history_id"
             --history_name "$history_name"
             --stats_tool_id "pe_histogram_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_peHistogram"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$output"
+            --output "$payload"
         ]]>
     </command>
     <inputs>
-        <param name="input_png" type="data" format="png" label="PNG input" />
         <param name="input_tabular" type="data" format="tabular" label="Tabular input" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>

@@ -54,12 +54,13 @@
             --stats_tool_id "tag_pileup_frequency_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
+            --tool_category "output_tagPileup"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
             #if $workflow_step is not None:
                 --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
-            --output "$output"
+            --output "$payload"
         ]]>
     </command>
     <inputs>
@@ -68,7 +69,7 @@
         <param name="input_tabular" type="data" format="tabular" label="Tabular input" />
     </inputs>
     <outputs>
-        <data name="output" format="txt" />
+        <data name="payload" type="data" format="txt" label="Send ${tool.name} results to PEGR" />
     </outputs>
     <tests>
     </tests>
