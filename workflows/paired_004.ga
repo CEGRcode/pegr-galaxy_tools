@@ -781,11 +781,6 @@
                     "label": "output_tabular",
                     "output_name": "output_tabular",
                     "uuid": "4b90b1cf-eba7-4d47-b816-93ff743746d6"
-                },
-                {
-                    "label": "output_png",
-                    "output_name": "output_png",
-                    "uuid": "d6cf985f-635b-49b5-abad-0906a401cf82"
                 }
             ]
         },
@@ -804,7 +799,16 @@
                     "output_name": "output1"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool bamCoverage",
+                    "name": "advancedOpt"
+                },
+                {
+                    "description": "runtime parameter for tool bamCoverage",
+                    "name": "bamInput"
+                }
+            ],
             "label": "Make Forward BigWig",
             "name": "bamCoverage",
             "outputs": [
@@ -825,7 +829,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"advancedOpt\": {\"showAdvancedOpt\": \"yes\", \"__current_case__\": 1, \"scaleFactor\": \"1.0\", \"smoothLength\": null, \"ignoreForNormalization\": \"\", \"skipNAs\": false, \"doExtendCustom\": {\"doExtend\": \"custom\", \"__current_case__\": 2, \"extendReadsValue\": \"1\"}, \"ignoreDuplicates\": false, \"centerReads\": false, \"minMappingQuality\": \"1\", \"samFlagInclude\": null, \"samFlagExclude\": null, \"minFragmentLength\": \"0\", \"maxFragmentLength\": \"0\", \"MNase\": false, \"Offset\": \"\", \"filterRNAstrand\": \"forward\", \"blackListFileName\": {\"__class__\": \"ConnectedValue\"}}, \"bamInput\": {\"__class__\": \"ConnectedValue\"}, \"binSize\": \"1\", \"exactScaling\": false, \"outFileFormat\": \"bigwig\", \"region\": \"\", \"scaling\": {\"type\": \"1x\", \"__current_case__\": 4, \"effectiveGenomeSize\": {\"effectiveGenomeSize_opt\": \"specific\", \"__current_case__\": 0, \"effectiveGenomeSize\": \"\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"advancedOpt\": {\"showAdvancedOpt\": \"yes\", \"__current_case__\": 1, \"scaleFactor\": \"1.0\", \"smoothLength\": null, \"ignoreForNormalization\": \"\", \"skipNAs\": false, \"doExtendCustom\": {\"doExtend\": \"no\", \"__current_case__\": 0}, \"ignoreDuplicates\": false, \"centerReads\": false, \"minMappingQuality\": \"1\", \"samFlagInclude\": \"64\", \"samFlagExclude\": \"16\", \"minFragmentLength\": \"0\", \"maxFragmentLength\": \"0\", \"MNase\": false, \"Offset\": \"1\", \"filterRNAstrand\": \"no\", \"blackListFileName\": {\"__class__\": \"RuntimeValue\"}}, \"bamInput\": {\"__class__\": \"RuntimeValue\"}, \"binSize\": \"1\", \"exactScaling\": false, \"outFileFormat\": \"bigwig\", \"region\": \"\", \"scaling\": {\"type\": \"cpm\", \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.5.4+galaxy0",
             "type": "tool",
             "uuid": "7ac2517c-8553-44dc-a832-567ade8116c4",
@@ -853,7 +857,16 @@
                     "output_name": "output1"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool bamCoverage",
+                    "name": "advancedOpt"
+                },
+                {
+                    "description": "runtime parameter for tool bamCoverage",
+                    "name": "bamInput"
+                }
+            ],
             "label": "Make Reverse BigWig",
             "name": "bamCoverage",
             "outputs": [
@@ -874,7 +887,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"advancedOpt\": {\"showAdvancedOpt\": \"yes\", \"__current_case__\": 1, \"scaleFactor\": \"1.0\", \"smoothLength\": null, \"ignoreForNormalization\": \"\", \"skipNAs\": false, \"doExtendCustom\": {\"doExtend\": \"custom\", \"__current_case__\": 2, \"extendReadsValue\": \"1\"}, \"ignoreDuplicates\": false, \"centerReads\": false, \"minMappingQuality\": \"1\", \"samFlagInclude\": null, \"samFlagExclude\": null, \"minFragmentLength\": \"0\", \"maxFragmentLength\": \"0\", \"MNase\": false, \"Offset\": \"\", \"filterRNAstrand\": \"reverse\", \"blackListFileName\": {\"__class__\": \"ConnectedValue\"}}, \"bamInput\": {\"__class__\": \"ConnectedValue\"}, \"binSize\": \"1\", \"exactScaling\": false, \"outFileFormat\": \"bigwig\", \"region\": \"\", \"scaling\": {\"type\": \"1x\", \"__current_case__\": 4, \"effectiveGenomeSize\": {\"effectiveGenomeSize_opt\": \"specific\", \"__current_case__\": 0, \"effectiveGenomeSize\": \"\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"advancedOpt\": {\"showAdvancedOpt\": \"yes\", \"__current_case__\": 1, \"scaleFactor\": \"1.0\", \"smoothLength\": null, \"ignoreForNormalization\": \"\", \"skipNAs\": false, \"doExtendCustom\": {\"doExtend\": \"no\", \"__current_case__\": 0}, \"ignoreDuplicates\": false, \"centerReads\": false, \"minMappingQuality\": \"1\", \"samFlagInclude\": \"80\", \"samFlagExclude\": \"0\", \"minFragmentLength\": \"0\", \"maxFragmentLength\": \"0\", \"MNase\": false, \"Offset\": \"1\", \"filterRNAstrand\": \"no\", \"blackListFileName\": {\"__class__\": \"RuntimeValue\"}}, \"bamInput\": {\"__class__\": \"RuntimeValue\"}, \"binSize\": \"1\", \"exactScaling\": false, \"outFileFormat\": \"bigwig\", \"region\": \"\", \"scaling\": {\"type\": \"cpm\", \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.5.4+galaxy0",
             "type": "tool",
             "uuid": "aab8ea3c-5242-418c-b95d-9e5b98ba79f2",
@@ -965,10 +978,6 @@
             "errors": null,
             "id": 23,
             "input_connections": {
-                "input_png": {
-                    "id": 18,
-                    "output_name": "output_png"
-                },
                 "input_tabular": {
                     "id": 18,
                     "output_name": "output_tabular"
