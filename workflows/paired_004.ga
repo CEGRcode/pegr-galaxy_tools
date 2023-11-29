@@ -654,16 +654,25 @@
                     "id": 3,
                     "output_name": "output"
                 },
-                "input_bam": {
+                "input1": {
                     "id": 14,
                     "output_name": "output1"
                 },
-                "input_bed": {
+                "input2": {
                     "id": 2,
                     "output_name": "output"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool ScriptManager: TagPileup",
+                    "name": "input1"
+                },
+                {
+                    "description": "runtime parameter for tool ScriptManager: TagPileup",
+                    "name": "input2"
+                }
+            ],
             "label": null,
             "name": "ScriptManager: TagPileup",
             "outputs": [
@@ -686,7 +695,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_tag-pileup",
-            "tool_state": "{\"BINSIZE\": \"1\", \"CPU\": \"1\", \"SHIFT\": \"0\", \"blacklist\": {\"equal_tags\": true, \"__current_case__\": 0, \"blacklist_yes\": {\"blacklist_option\": true, \"__current_case__\": 0, \"blacklist_filter\": {\"__class__\": \"ConnectedValue\"}}}, \"composite_transformation\": {\"composite_options\": \"none\", \"__current_case__\": 0}, \"input_bam\": {\"__class__\": \"ConnectedValue\"}, \"input_bed\": {\"__class__\": \"ConnectedValue\"}, \"output_strands\": {\"strand\": \"separate\", \"__current_case__\": 0, \"sense_conditional\": {\"sense\": \"sense_color\", \"__current_case__\": 0, \"color_sense\": \"0000FF\"}, \"anti_conditional\": {\"anti\": \"anti_color\", \"__current_case__\": 0, \"color_anti\": \"FF0000\"}}, \"read_aspect\": \"5end\", \"read_output\": \"read1\", \"require_paired_end\": {\"mate_pair\": false, \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"BINSIZE\": \"1\", \"CPU\": \"1\", \"SHIFT\": \"0\", \"blacklist\": {\"equal_tags\": true, \"__current_case__\": 0, \"blacklist_yes\": {\"blacklist_option\": true, \"__current_case__\": 0, \"blacklist_filter\": {\"__class__\": \"ConnectedValue\"}}}, \"composite_transformation\": {\"composite_options\": \"none\", \"__current_case__\": 0}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"input2\": {\"__class__\": \"RuntimeValue\"}, \"input_bam\": {\"__class__\": \"ConnectedValue\"}, \"input_bed\": {\"__class__\": \"ConnectedValue\"}, \"output_strands\": {\"strand\": \"separate\", \"__current_case__\": 0, \"sense_conditional\": {\"sense\": \"sense_color\", \"__current_case__\": 0, \"color_sense\": \"0000FF\"}, \"anti_conditional\": {\"anti\": \"anti_color\", \"__current_case__\": 0, \"color_anti\": \"FF0000\"}}, \"read_aspect\": \"5end\", \"read_output\": \"read1\", \"require_paired_end\": {\"mate_pair\": false, \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "98f26f80-15d4-40f0-ae54-b09c81109e35",
@@ -719,7 +728,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_bam-to-scidx",
-            "tool_state": "{\"BAM\": {\"__class__\": \"RuntimeValue\"}, \"input\": {\"__class__\": \"ConnectedValue\"}, \"read\": \"read_1\", \"require_paired_end\": {\"mate_pair\": false, \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"BAM\": {\"__class__\": \"RuntimeValue\"}, \"gzip\": true, \"input\": {\"__class__\": \"ConnectedValue\"}, \"read\": \"read_1\", \"require_paired_end\": {\"mate_pair\": false, \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "cd782242-26c5-4d5c-8075-1f6ca17c94e8",
@@ -2236,7 +2245,7 @@
             },
             "post_job_actions": {},
             "tool_id": "resize_4color_plot",
-            "tool_state": "{\"cols\": \"200\", \"input_image\": {\"__class__\": \"ConnectedValue\"}, \"rows\": \"600\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"cols\": \"200\", \"input_image\": {\"__class__\": \"ConnectedValue\"}, \"method\": \"opencv\", \"rows\": \"600\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
             "uuid": "d82c1570-e0f1-4a43-9805-b27f63d69b84",
