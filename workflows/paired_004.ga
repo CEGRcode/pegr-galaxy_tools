@@ -1590,24 +1590,9 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "RepeatMasker repeat statistics on input dataset(s)",
-                    "output_name": "output_table",
-                    "uuid": "375b5b4e-7a58-4ac5-9465-83f536623869"
-                },
-                {
                     "label": "RepeatMasker masked sequence on input dataset(s)",
                     "output_name": "output_masked_genome",
                     "uuid": "bc850251-05bb-42ac-a234-6d43d623ac4a"
-                },
-                {
-                    "label": "RepeatMasker repeat catalogue on input dataset(s)",
-                    "output_name": "output_repeat_catalog",
-                    "uuid": "289e6a79-2453-4ef8-98ba-45085d4d9303"
-                },
-                {
-                    "label": "RepeatMasker output log on input dataset(s)",
-                    "output_name": "output_log",
-                    "uuid": "2a69b954-a104-4872-864e-5b0f3e523747"
                 }
             ]
         },
