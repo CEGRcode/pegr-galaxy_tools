@@ -1905,7 +1905,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_expand-gff",
-            "tool_state": "{\"SIZE\": \"10\", \"expansion_select\": \"border\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"SIZE\": \"10\", \"expansion_select\": \"border\", \"gzip\": false, \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "cb53db6e-865c-46b5-9e1f-3d53c7e9bf8c",
@@ -1944,7 +1944,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_expand-gff",
-            "tool_state": "{\"SIZE\": \"500\", \"expansion_select\": \"center\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"SIZE\": \"500\", \"expansion_select\": \"center\", \"gzip\": true, \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "1dc75a83-5a0a-4949-bbba-7d9759ffa5c9",
@@ -2028,7 +2028,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_gff-to-bed",
-            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"gzip\": true, \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "d020b4f4-1f24-41b0-a891-4cc3cd061362",
@@ -2115,7 +2115,7 @@
         },
         "51": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.2",
+            "content_id": "scriptmanager_tag-pileup",
             "errors": null,
             "id": 51,
             "input_connections": {
@@ -2130,14 +2130,18 @@
             },
             "inputs": [],
             "label": null,
-            "name": "Tag pileup frequency",
+            "name": "ScriptManager: TagPileup",
             "outputs": [
                 {
-                    "name": "heatmaps",
-                    "type": "input"
+                    "name": "composite",
+                    "type": "tabular"
                 },
                 {
-                    "name": "output1",
+                    "name": "matrix_sense",
+                    "type": "tabular"
+                },
+                {
+                    "name": "matrix_anti",
                     "type": "tabular"
                 }
             ],
@@ -2146,30 +2150,13 @@
                 "top": 1100
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.2",
-            "tool_shed_repository": {
-                "changeset_revision": "580e8bcb6413",
-                "name": "tag_pileup_frequency",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"bin_size\": \"1\", \"combine_strands\": \"0\", \"composite_smoothing_window\": \"0\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"output_heatmap\": true, \"proper_pe\": false, \"reads\": \"0\", \"tag_shift\": \"0\", \"tags_equal\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.2",
+            "tool_id": "scriptmanager_tag-pileup",
+            "tool_state": "{\"BINSIZE\": \"1\", \"CPU\": \"1\", \"SHIFT\": \"0\", \"blacklist\": {\"equal_tags\": false, \"__current_case__\": 1}, \"composite_transformation\": {\"composite_options\": \"none\", \"__current_case__\": 0}, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"output_strands\": {\"strand\": \"separate\", \"__current_case__\": 0, \"sense_conditional\": {\"sense\": \"sense_color\", \"__current_case__\": 0, \"color_sense\": \"0000FF\"}, \"anti_conditional\": {\"anti\": \"anti_color\", \"__current_case__\": 0, \"color_anti\": \"FF0000\"}}, \"read_aspect\": \"5end\", \"read_output\": \"read1\", \"require_paired_end\": {\"mate_pair\": false, \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
             "type": "tool",
-            "uuid": "5811a6bd-bf5d-41ae-be52-555155446b6c",
+            "uuid": "fa6bf701-66b0-4471-917e-1746518d05c9",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output1",
-                    "uuid": "9fcccf8f-9061-4ba0-87e3-3a1611438454"
-                },
-                {
-                    "label": null,
-                    "output_name": "heatmaps",
-                    "uuid": "892fef6a-425f-453c-b70c-12ac6accaa18"
-                }
-            ]
+            "workflow_outputs": []
         },
         "52": {
             "annotation": "",
@@ -2216,13 +2203,17 @@
             "errors": null,
             "id": 53,
             "input_connections": {
-                "input_heatmaps": {
+                "input_anti": {
                     "id": 51,
-                    "output_name": "heatmaps"
+                    "output_name": "matrix_anti"
+                },
+                "input_sense": {
+                    "id": 51,
+                    "output_name": "matrix_sense"
                 },
                 "input_tabular": {
                     "id": 51,
-                    "output_name": "output1"
+                    "output_name": "composite"
                 }
             },
             "inputs": [],
@@ -2240,7 +2231,7 @@
             },
             "post_job_actions": {},
             "tool_id": "tag_pileup_frequency_output_stats",
-            "tool_state": "{\"input_heatmaps\": {\"__class__\": \"ConnectedValue\"}, \"input_tabular\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input_anti\": {\"__class__\": \"ConnectedValue\"}, \"input_heatmaps\": {\"__class__\": \"ConnectedValue\"}, \"input_sense\": {\"__class__\": \"ConnectedValue\"}, \"input_tabular\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
             "uuid": "ee643b74-65c9-4568-b013-7d7865b3b3f8",
