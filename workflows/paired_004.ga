@@ -1761,7 +1761,7 @@
         },
         "42": {
             "annotation": "",
-            "content_id": "motif_logo_memexml_to_pngs",
+            "content_id": "get_motif_logos_from_meme",
             "errors": null,
             "id": 42,
             "input_connections": {
@@ -1770,16 +1770,17 @@
                     "output_name": "xml_outfile"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool generate motif logo svgs from meme file",
+                    "name": "input"
+                }
+            ],
             "label": null,
-            "name": "extract list of motif logos from memexml file",
+            "name": "generate motif logo svgs from meme file",
             "outputs": [
                 {
-                    "name": "output_logo_png",
-                    "type": "input"
-                },
-                {
-                    "name": "output_logo_rc_png",
+                    "name": "output_logo_svg",
                     "type": "input"
                 }
             ],
@@ -1788,24 +1789,13 @@
                 "top": 0
             },
             "post_job_actions": {},
-            "tool_id": "motif_logo_memexml_to_pngs",
-            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.0",
+            "tool_id": "get_motif_logos_from_meme",
+            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.2",
             "type": "tool",
-            "uuid": "4679c8ce-cd08-4a16-a0c8-81bd8b0b674d",
+            "uuid": "bfa47c01-a7d0-4f7a-8311-ff578a61b3fc",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output_logo_rc_png",
-                    "uuid": "a241d9cc-41dc-4cbb-932b-7fcde9fa8f8e"
-                },
-                {
-                    "label": null,
-                    "output_name": "output_logo_png",
-                    "uuid": "23a76e26-1477-4624-9d0a-3ac52375a66f"
-                }
-            ]
+            "workflow_outputs": []
         },
         "43": {
             "annotation": "",
