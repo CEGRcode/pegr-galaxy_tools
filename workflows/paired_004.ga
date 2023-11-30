@@ -1812,25 +1812,22 @@
                     "output_name": "xml_outfile"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FIMO",
+                    "name": "fasta_type"
+                },
+                {
+                    "description": "runtime parameter for tool FIMO",
+                    "name": "input_motifs"
+                }
+            ],
             "label": null,
             "name": "FIMO",
             "outputs": [
                 {
                     "name": "txt_outfile",
                     "type": "txt"
-                },
-                {
-                    "name": "html_outfile",
-                    "type": "html"
-                },
-                {
-                    "name": "gff_outfile",
-                    "type": "txt"
-                },
-                {
-                    "name": "xml_outfile",
-                    "type": "memexml"
                 }
             ],
             "position": {
@@ -1845,7 +1842,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"fasta_type\": {\"fasta_type_selector\": \"history\", \"__current_case__\": 1, \"input_database\": {\"__class__\": \"ConnectedValue\"}}, \"input_motifs\": {\"__class__\": \"ConnectedValue\"}, \"non_commercial_use\": true, \"options_type\": {\"options_type_selector\": \"advanced\", \"__current_case__\": 1, \"thresh\": \"0.0001\", \"qv_thresh\": false, \"bgfile_type\": {\"bgfile_type_selector\": \"default\", \"__current_case__\": 1}, \"max_strand\": false, \"max_stored_scores\": \"100000\", \"motifs_cond\": {\"motif_selector\": \"no\", \"__current_case__\": 0}, \"motif_pseudo\": \"0.1\", \"no_qvalue\": true, \"parse_genomic_coords\": true, \"psp_cond\": {\"psp_selector\": \"no\", \"__current_case__\": 0}, \"prior_dist_cond\": {\"prior_dist_selector\": \"no\", \"__current_case__\": 0}}, \"output_options\": {\"html_outfile\": true, \"xml_outfile\": true, \"gff_outfile\": true}, \"scanrc\": true, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"fasta_type\": {\"fasta_type_selector\": \"history\", \"__current_case__\": 1, \"input_database\": {\"__class__\": \"RuntimeValue\"}}, \"input_motifs\": {\"__class__\": \"RuntimeValue\"}, \"non_commercial_use\": true, \"options_type\": {\"options_type_selector\": \"advanced\", \"__current_case__\": 1, \"thresh\": \"0.0001\", \"qv_thresh\": false, \"bgfile_type\": {\"bgfile_type_selector\": \"default\", \"__current_case__\": 1}, \"max_strand\": false, \"max_stored_scores\": \"100000\", \"motifs_cond\": {\"motif_selector\": \"no\", \"__current_case__\": 0}, \"motif_pseudo\": \"0.1\", \"no_qvalue\": true, \"parse_genomic_coords\": true, \"psp_cond\": {\"psp_selector\": \"no\", \"__current_case__\": 0}, \"prior_dist_cond\": {\"prior_dist_selector\": \"no\", \"__current_case__\": 0}}, \"output_options\": {\"html_outfile\": false, \"xml_outfile\": false, \"gff_outfile\": false}, \"scanrc\": true, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "5.4.1+galaxy0",
             "type": "tool",
             "uuid": "06515856-42b9-4eb2-8ac9-48c40e7edd03",
@@ -1853,23 +1850,8 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "html_outfile",
-                    "uuid": "92f0d1b4-f7fb-43b2-b0f8-b29546902bc4"
-                },
-                {
-                    "label": null,
-                    "output_name": "xml_outfile",
-                    "uuid": "038d0306-726b-4312-8659-d9ff2b3e4359"
-                },
-                {
-                    "label": null,
                     "output_name": "txt_outfile",
                     "uuid": "df4c0e31-de86-4694-a3cf-2cb3ce905c7e"
-                },
-                {
-                    "label": null,
-                    "output_name": "gff_outfile",
-                    "uuid": "bce109bd-39a3-4620-ac94-e42a581612dc"
                 }
             ]
         },
