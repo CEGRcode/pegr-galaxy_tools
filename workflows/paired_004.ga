@@ -1709,46 +1709,9 @@
         },
         "41": {
             "annotation": "",
-            "content_id": "meme_meme_output_stats",
-            "errors": null,
-            "id": 41,
-            "input_connections": {
-                "input_html": {
-                    "id": 40,
-                    "output_name": "html_outfile"
-                },
-                "input_txt": {
-                    "id": 40,
-                    "output_name": "txt_outfile"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "Meme output statistics",
-            "outputs": [
-                {
-                    "name": "payload",
-                    "type": "txt"
-                }
-            ],
-            "position": {
-                "left": 4000,
-                "top": 100
-            },
-            "post_job_actions": {},
-            "tool_id": "meme_meme_output_stats",
-            "tool_state": "{\"input_html\": {\"__class__\": \"ConnectedValue\"}, \"input_txt\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.0",
-            "type": "tool",
-            "uuid": "25bb82ad-81da-4750-9194-b5afc4b09e9b",
-            "when": null,
-            "workflow_outputs": []
-        },
-        "42": {
-            "annotation": "",
             "content_id": "get_motif_logos_from_meme",
             "errors": null,
-            "id": 42,
+            "id": 41,
             "input_connections": {
                 "input": {
                     "id": 40,
@@ -1771,22 +1734,22 @@
             ],
             "position": {
                 "left": 4500,
-                "top": 0
+                "top": 175
             },
             "post_job_actions": {},
             "tool_id": "get_motif_logos_from_meme",
-            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
             "type": "tool",
             "uuid": "bfa47c01-a7d0-4f7a-8311-ff578a61b3fc",
             "when": null,
             "workflow_outputs": []
         },
-        "43": {
+        "42": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/5.4.1+galaxy0",
             "errors": null,
-            "id": 43,
+            "id": 42,
             "input_connections": {
                 "fasta_type|input_database": {
                     "id": 34,
@@ -1840,6 +1803,52 @@
                 }
             ]
         },
+        "43": {
+            "annotation": "",
+            "content_id": "meme_meme_output_stats",
+            "errors": null,
+            "id": 43,
+            "input_connections": {
+                "input_html": {
+                    "id": 40,
+                    "output_name": "html_outfile"
+                },
+                "input_svg": {
+                    "id": 41,
+                    "output_name": "output_logo_svg"
+                },
+                "input_txt": {
+                    "id": 40,
+                    "output_name": "txt_outfile"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Meme output statistics",
+                    "name": "input_svg"
+                }
+            ],
+            "label": null,
+            "name": "Meme output statistics",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 4500,
+                "top": 0
+            },
+            "post_job_actions": {},
+            "tool_id": "meme_meme_output_stats",
+            "tool_state": "{\"input_html\": {\"__class__\": \"ConnectedValue\"}, \"input_svg\": {\"__class__\": \"RuntimeValue\"}, \"input_txt\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "25bb82ad-81da-4750-9194-b5afc4b09e9b",
+            "when": null,
+            "workflow_outputs": []
+        },
         "44": {
             "annotation": "",
             "content_id": "fimo_text_to_gffs",
@@ -1847,7 +1856,7 @@
             "id": 44,
             "input_connections": {
                 "input": {
-                    "id": 43,
+                    "id": 42,
                     "output_name": "txt_outfile"
                 }
             },
