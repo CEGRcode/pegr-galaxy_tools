@@ -1270,7 +1270,7 @@
         },
         "31": {
             "annotation": "",
-            "content_id": "sort1",
+            "content_id": "sort_gz",
             "errors": null,
             "id": 31,
             "input_connections": {
@@ -1279,9 +1279,14 @@
                     "output_name": "MP"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Sort (gzip)",
+                    "name": "input"
+                }
+            ],
             "label": null,
-            "name": "Sort",
+            "name": "Sort (gzip)",
             "outputs": [
                 {
                     "name": "out_file1",
@@ -1292,26 +1297,14 @@
                 "left": 2500,
                 "top": 450
             },
-            "post_job_actions": {
-                "DeleteIntermediatesActionout_file1": {
-                    "action_arguments": {},
-                    "action_type": "DeleteIntermediatesAction",
-                    "output_name": "out_file1"
-                }
-            },
-            "tool_id": "sort1",
-            "tool_state": "{\"column\": \"6\", \"column_set\": [], \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"order\": \"DESC\", \"style\": \"num\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.2.0",
+            "post_job_actions": {},
+            "tool_id": "sort_gz",
+            "tool_state": "{\"column\": \"6\", \"column_set\": [], \"gzip\": true, \"header_lines\": \"0\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"order\": \"r\", \"style\": \"n\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
             "type": "tool",
-            "uuid": "b4e905e3-3b9b-4541-8d69-7a3a5ac2c1de",
+            "uuid": "9c06702a-cdea-4e91-b618-fa9e62d61c71",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "out_file1",
-                    "output_name": "out_file1",
-                    "uuid": "dfe3b1f1-61ee-4a7a-9dfc-da179c4fcf08"
-                }
-            ]
+            "workflow_outputs": []
         },
         "32": {
             "annotation": "",
@@ -1339,7 +1332,7 @@
             },
             "post_job_actions": {},
             "tool_id": "scriptmanager_expand-gff",
-            "tool_state": "{\"SIZE\": \"30\", \"expansion_select\": \"border\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"SIZE\": \"30\", \"expansion_select\": \"border\", \"gzip\": true, \"input\": {\"__class__\": \"ConnectedValue\"}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.0",
             "type": "tool",
             "uuid": "85981d3f-2cb7-480a-946b-2bcdcc335740",
@@ -1354,7 +1347,7 @@
         },
         "33": {
             "annotation": "",
-            "content_id": "Show beginning1",
+            "content_id": "head_gz",
             "errors": null,
             "id": 33,
             "input_connections": {
@@ -1363,9 +1356,14 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Select first (gzip)",
+                    "name": "input"
+                }
+            ],
             "label": null,
-            "name": "Select first",
+            "name": "Select first (gzip)",
             "outputs": [
                 {
                     "name": "out_file1",
@@ -1376,26 +1374,14 @@
                 "left": 3250,
                 "top": 250
             },
-            "post_job_actions": {
-                "DeleteIntermediatesActionout_file1": {
-                    "action_arguments": {},
-                    "action_type": "DeleteIntermediatesAction",
-                    "output_name": "out_file1"
-                }
-            },
-            "tool_id": "Show beginning1",
-            "tool_state": "{\"header\": false, \"input\": {\"__class__\": \"ConnectedValue\"}, \"lineNum\": \"500\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.2",
+            "post_job_actions": {},
+            "tool_id": "head_gz",
+            "tool_state": "{\"gzip\": false, \"input\": {\"__class__\": \"RuntimeValue\"}, \"lineNum\": \"500\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
             "type": "tool",
-            "uuid": "0e67767f-6f5e-40f5-ab0a-e7f66e6210d8",
+            "uuid": "29f6541a-150c-47ce-a666-ab984eb53e67",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "out_file1",
-                    "uuid": "516f3d4f-0387-4ae1-8e5c-d2d24391705e"
-                }
-            ]
+            "workflow_outputs": []
         },
         "34": {
             "annotation": "",
