@@ -26,12 +26,7 @@
                 #set stderr = ''
             #end if
             #set tool_id = $job.tool_id
-            #set tool_parameters = ""
-            #for $p in $job.parameters:
-                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
-                #set tool_parameters = $tool_parameters + "__SeP__" + str($p.value)
-            #end for
-            #set tool_parameters = $tool_parameters + "__SeP__title__SeP__TSS__SeP__xlabel__SeP__TSS"
+            #set tool_parameters = "input2X__identifier____SeP__" + str($input_tabular) + "__SeP__title__SeP__TSS__SeP__xlabel__SeP__TSS"
             #set workflow_step = None
             #set pjaas = $job.post_job_actions
             #for pjaa in $pjaas:
